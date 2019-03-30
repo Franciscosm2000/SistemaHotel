@@ -50,14 +50,77 @@ AS
 	END
 
 CREATE PROCEDURE Buscar_Regs
+@dato varchar(30)
 AS
---TODO: CREAR ESTE PROCEDIMIENTO
+	Select
+	id_cliente as Id_Cliente,
+	c.p_nom as [Primer Nombre],
+	c.s_nom as [Segundo Nombre],
+	c.p_apell as [Primer Apellido],
+	c.s_apell as [Segundo Apellido],
+	direccion as Dirección,
+	correo as Correo,
+	tel as Teléfono
+	from Cliente c
+	where c.p_nom like @dato + '%' 
+	or  c.s_nom like @dato + '%' 
+	or  c.p_apell like @dato + '%' 
+	or c.s_apell like @dato + '%';
+
 
 
 CREATE PROCEDURE Disponibilidad_Habitacion
 AS
---TODO: CREAR ESTE PROCEDIMIENTO
+@IdHabitación int, @Fechaentrada date, @Fechasalida date
+as
 
+Create table #TFecha 
+(IdTFecha int primary key identity(1,1),
+ Fecha date,
+ Estado varchar(60))
 
+  Declare @Contador int, @Fecha date, @Días int
+ Set @Contador = 1
+ set @Fecha = @Fechaentrada
+ Set @Días = datediff(day,@Fechaentrada, @Fechasalida)
+ while (@Contador <= (datediff(day,@Fechaentrada, @Fechasalida)+1))
+ begin
+ insert into #TFecha (Fecha) values (@Fecha)
+ set @Fecha = dateadd(day,1, @Fecha )
+ Set @Contador = @Contador +1 
+ end
 
-/*TODO: CREAR PROCEDIMIENTOS DE AÑADIR RESERVA, Y DEL EXAMEN 2 Y 3*/
+ Set @Contador = 1
+
+while(@Contador <= ((Select count(*) from #TFecha)) )
+begin
+set @Fecha = (Select Fecha from #TFecha where IdTFecha = @Contador)
+if not exists(Select * from habitacion_reserva hr
+              where @Fecha >= hr.fecha_entrada and @Fecha < hr.fecha_salida
+			  and hr.id_habitacion = @IdHabitación
+			   )
+			   begin
+	          update #TFecha set Estado = 'Disponible' 
+	          where IdTFecha = @Contador
+	          end
+			  else
+			  begin
+			  update #TFecha set Estado = 'Reservado' 
+	          where IdTFecha = @Contador
+			  end
+
+			 
+			  if(@Contador = (Select count(*) from #TFecha))
+			    begin
+			  update #TFecha set Estado = 'Salida' 
+	          where IdTFecha = @Contador
+			  end
+			   Set @Contador = @Contador +1
+			  
+
+end
+
+Select * from #TFecha
+Drop table #TFecha
+
+--TODO: Procedimientos 2 y 3 del examen y Procedimiento para reserva
