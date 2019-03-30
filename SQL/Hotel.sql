@@ -33,8 +33,11 @@ create table cliente(
 	s_apell varchar(15),
 	direccion varchar(70),
 	tel varchar(10),
-	correo varchar(25)
+	correo varchar(25),
+	stat varchar(20)
 );
+alter table cliente
+add constraint [CK_VAL_cliente_stat] check(stat in('HABILITADO', 'DESHABILITADO'));
 
 create table empleado(
 	id_empleado integer primary key identity(1,1),
@@ -106,11 +109,11 @@ alter table cargos_servicios
 add primary key(id_servicio, id_hab_reserva);
 
 
-insert into cliente values('Juan', 'Jose', 'Lopez', 'Mendoza', '12565 Reghan St.', '0051414899', 'juanlopez@aol.com');
-insert into cliente values('Maria', 'Alejandra', 'Jerez', 'Mendez', '564 Union Av.', '0088947476', 'marjerez@hotmail.com');
-insert into cliente values('Pepito', 'Jaime', 'Perez', 'Garcia', '7848 Longhorn & Vista Rd.', '7894514899', 'peperez@aol.com');
-insert into cliente values('Vanessa', 'Lucia', 'Mejia', 'Avenda�o', '5567 Calle 8.', '1526047893', 'lucia_mejia15@yahoo.com');
-insert into cliente values('Ana', 'Conda', 'Juarez', 'Soza', '141 Union Rd.', '7894514799', 'anaconda@yahoo.com');
+insert into cliente values('Juan', 'Jose', 'Lopez', 'Mendoza', '12565 Reghan St.', '0051414899', 'juanlopez@aol.com','HABILITADO');
+insert into cliente values('Maria', 'Alejandra', 'Jerez', 'Mendez', '564 Union Av.', '0088947476', 'marjerez@hotmail.com','HABILITADO');
+insert into cliente values('Pepito', 'Jaime', 'Perez', 'Garcia', '7848 Longhorn & Vista Rd.', '7894514899', 'peperez@aol.com','HABILITADO');
+insert into cliente values('Vanessa', 'Lucia', 'Mejia', 'Avenda�o', '5567 Calle 8.', '1526047893', 'lucia_mejia15@yahoo.com','HABILITADO');
+insert into cliente values('Ana', 'Conda', 'Juarez', 'Soza', '141 Union Rd.', '7894514799', 'anaconda@yahoo.com','HABILITADO');
 
 insert into empleado values('Mario', 'Alberto', 'Roa', 'Carrion', '12569 Reghan St.', '0051488772', 'maalroca@gmail.com');
 insert into empleado values('Maria', 'Alejandra', 'Garcia', 'Jiron', '12560 Vinerod St.', '0052218772', 'maalegaji@gmail.com');
@@ -138,14 +141,14 @@ insert into reserva values(4, 3, '20190302', 'CONTADO', 'EUR', 'CANCELADO');
 insert into reserva values(5, 2, '20190311', 'CREDITO', 'USD', 'RESERVADO');
 insert into reserva values(1, 3, '20190317', 'CONTADO', 'NIO', 'RESERVADO');
 
-insert into habitacion_reserva values(4,14,'20190312', '20190318', 500);
-insert into habitacion_reserva values(2,14,'20190312', '20190318', 200);
-insert into habitacion_reserva values(3,15,'20190318', '20190320', 100);
-insert into habitacion_reserva values(5,16,'20190310', '20190318',100);
-insert into habitacion_reserva values(6,17,'20190320', '20190325',200);
-insert into habitacion_reserva values(8,17,'20190320', '20190325',500);
-insert into habitacion_reserva values(9,18,'20190319', '20190323',100);
-insert into habitacion_reserva values(10,19,'20190318', '20190321',500);
+insert into habitacion_reserva values(4,1,'20190312', '20190318', 500);
+insert into habitacion_reserva values(2,1,'20190312', '20190318', 200);
+insert into habitacion_reserva values(3,2,'20190318', '20190320', 100);
+insert into habitacion_reserva values(5,3,'20190310', '20190318',100);
+insert into habitacion_reserva values(6,4,'20190320', '20190325',200);
+insert into habitacion_reserva values(8,5,'20190320', '20190325',500);
+insert into habitacion_reserva values(9,6,'20190319', '20190323',100);
+insert into habitacion_reserva values(10,6,'20190318', '20190321',500);
 
 insert into servicio values('Desayuno al cuarto', 60);
 insert into servicio values('Almuerzo al cuarto', 70);
