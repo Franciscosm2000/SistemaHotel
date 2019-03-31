@@ -24,6 +24,7 @@ AS
 	INSERT INTO cliente VALUES(@p_nom,@s_nom,@p_apell,@s_apell,@dir,@tel,@corr, 'HABILITADO');
 	SELECT * FROM cliente;
 
+
 CREATE PROCEDURE Actualizar_Cliente
 @id_cl int, @p_nom varchar(15),
 @s_nom varchar(15), @p_apell varchar(15),

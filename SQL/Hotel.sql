@@ -173,3 +173,4 @@ insert into cargos_servicios values(1,1,60);
 insert into cargos_servicios values(3,1,40);
 insert into cargos_servicios values(5,2,30);
 
+select *from cliente

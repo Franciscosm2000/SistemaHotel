@@ -16,5 +16,10 @@ namespace SistemaHotel.Views
         {
             InitializeComponent();
         }
+
+        private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pnlControlUsuario.Controls.Add(new AgregarCliente());
+        }
     }
 }
