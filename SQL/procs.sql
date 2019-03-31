@@ -123,4 +123,58 @@ end
 Select * from #TFecha
 Drop table #TFecha
 
---TODO: Procedimientos 2 y 3 del examen y Procedimiento para reserva
+CREATE FUNCTION disponibilidad_habitacion(@no_hab int, @f_in date, @f_out date)
+RETURNS VARCHAR(20)
+AS BEGIN
+		DECLARE @stat varchar(20);
+	--si existe reserva para esa habitacion en ese determinado rango de fechas
+		IF exists(SELECT * FROM habitacion_reserva hr WHERE hr.no_habitacion=@no_hab and (hr.fecha_salida>=@f_in and hr.fecha_entrada<@f_out))
+		BEGIN
+			--se actualiza el estado de la tabla temporal a reservado  
+			set @stat='OCUPADO';
+		END
+		ELSE
+		BEGIN
+			--si no, se deja en disponible (se hace update de todas formas ya que
+			-- al tomarse de la tabla original, el estado puede estar en OCUPADO)
+			set @stat='DISPONIBLE';
+		END
+		RETURN @stat;
+	END
+
+CREATE PROCEDURE disponibilidad_hab @f_in date, @f_out date
+AS
+	SELECT h.no_habitacion as [N° Habitación],
+	th.nom_tipo as Categoría,
+	dbo.disponibilidad_habitacion(h.no_habitacion, @f_in, @f_out)
+	as Estado
+	FROM habitacion h INNER JOIN tipo_habitacion th ON
+	th.cod_tipo=h.cod_tipo;
+
+CREATE PROCEDURE rec_mes_año
+@m int, @yr int
+AS
+	--recaudaciones por habitacion
+	SELECT hr.no_habitacion AS [N° Habitacion], sum(hr.precio) AS [Recaudación total] 
+	FROM habitacion_reserva hr
+	INNER JOIN reserva r ON r.id_reserva=hr.id_reserva
+	WHERE MONTH(r.fecha_reserva)=@m AND YEAR(r.fecha_reserva)=@yr
+	GROUP BY hr.no_habitacion;
+	--recaudaciones por servicio
+	SELECT s.descr as [Nombre servicio], sum(cs.precio) as Recaudacion FROM servicio s
+	INNER JOIN cargos_servicios cs ON cs.id_servicio=s.id_servicio
+	INNER JOIN habitacion_reserva hr ON cs.id_hab_reserva=hr.id_hab_reserva
+	INNER JOIN reserva r ON r.id_reserva=hr.id_reserva
+	WHERE MONTH(r.fecha_reserva)= @m AND YEAR(r.fecha_reserva)=@yr
+	GROUP BY s.descr; 
+	--comisiones
+	SELECT (em.p_nom+' '+em.p_apell) as [Nombre Empleado],
+	ROUND((sum(hr.precio)*0.15),2) as Comision
+	FROM reserva r 
+	INNER JOIN habitacion_reserva hr ON hr.id_reserva=r.id_reserva
+	INNER JOIN empleado em ON em.id_empleado=r.id_empleado
+	WHERE MONTH(r.fecha_reserva)= @m AND YEAR(r.fecha_reserva)=@yr
+	GROUP BY (em.p_nom+' '+em.p_apell);
+
+--TODO: Crear visualizacion para reserva, habitaciones, crear insercion para reserva y hab_reserva
+--Crear cualquier otro procedimiento que sea necesario. DEBE ESTAR COMENTADO
