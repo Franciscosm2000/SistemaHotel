@@ -1,0 +1,5 @@
+#Aqui deben de guardarse las urls de conexion de cada uno de nosotros para sustituirlas en connection.cs
+
+Jerry: "Data Source=USER19-UXPC\\SQLEXPRESS; Initial Catalog=Hotel; user=sa; password =SysAdmin547"
+Fran:  "Server = DESKTOP-RQ1ANIO; Database = Hotel; Integrated Security = true"
+Saul:
