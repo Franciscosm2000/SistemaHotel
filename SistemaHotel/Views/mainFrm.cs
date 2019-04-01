@@ -21,5 +21,10 @@ namespace SistemaHotel.Views
         {
             pnlControlUsuario.Controls.Add(new AgregarCliente());
         }
+
+        private void mainFrm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -20,9 +20,14 @@ namespace SistemaHotel.Views
         //Agregando Cliente
         private void bttGuardar_Click(object sender, EventArgs e)
         {
-            CCliente cliente = new CCliente();
-            cliente.AgregandoCliente(txbPN.Text,txbSN.Text,txbPA.Text,txbSA.Text,txbTelefono.Text,txbDireccion.Text,txbCorreo.Text);
-            MessageBox.Show("Agregado Correctamente ...","",MessageBoxButtons.OK);
+           //BAD PROCEDURE
+        }
+
+        private void AgregarCliente_Load(object sender, EventArgs e)
+        {
+            CCliente cl = new CCliente();
+            clienteGrid.DataSource = cl.show();
+            clienteGrid.Columns["Id_Cliente"].Visible = false;
         }
     }
 }

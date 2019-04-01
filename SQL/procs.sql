@@ -3,16 +3,17 @@ GO
 
 CREATE PROCEDURE Mostrar_Clientes
 AS
-	 c.id_cliente as Id_Cliente,
-	 c.p_nom as [Primer Nombre],
-	 c.s_nom as [Segundo Nombre],
-	 c.p_apell as [Primer Apellido],
-	 c.s_apell as [Segundo Apellido],
+	 Select
+	 id_cliente as Id_Cliente,
+	 p_nom as [Primer Nombre],
+	 s_nom as [Segundo Nombre],
+	 p_apell as [Primer Apellido],
+	 s_apell as [Segundo Apellido],
 	 direccion as Dirección,
 	 correo as Correo,
 	 tel as Teléfono,
 	 stat as Estado
-	 from Cliente c
+	 from Cliente;
 
 
 CREATE PROCEDURE Insertar_Cliente
@@ -71,7 +72,6 @@ AS
 
 
 CREATE PROCEDURE Disponibilidad_Habitacion
-AS
 @IdHabitación int, @Fechaentrada date, @Fechasalida date
 as
 
@@ -98,7 +98,7 @@ begin
 set @Fecha = (Select Fecha from #TFecha where IdTFecha = @Contador)
 if not exists(Select * from habitacion_reserva hr
               where @Fecha >= hr.fecha_entrada and @Fecha < hr.fecha_salida
-			  and hr.id_habitacion = @IdHabitación
+			  and hr.no_habitacion = @IdHabitación
 			   )
 			   begin
 	          update #TFecha set Estado = 'Disponible' 
@@ -124,7 +124,8 @@ end
 Select * from #TFecha
 Drop table #TFecha
 
-CREATE FUNCTION disponibilidad_habitacion(@no_hab int, @f_in date, @f_out date)
+
+CREATE FUNCTION fn_disponibilidad_habitacion(@no_hab int, @f_in date, @f_out date)
 RETURNS VARCHAR(20)
 AS BEGIN
 		DECLARE @stat varchar(20);
@@ -143,11 +144,11 @@ AS BEGIN
 		RETURN @stat;
 	END
 
-CREATE PROCEDURE disponibilidad_hab @f_in date, @f_out date
+Alter PROCEDURE disponibilidad_hab @f_in date, @f_out date
 AS
 	SELECT h.no_habitacion as [N° Habitación],
 	th.nom_tipo as Categoría,
-	dbo.disponibilidad_habitacion(h.no_habitacion, @f_in, @f_out)
+	dbo.fn_disponibilidad_habitacion(h.no_habitacion, @f_in, @f_out)
 	as Estado
 	FROM habitacion h INNER JOIN tipo_habitacion th ON
 	th.cod_tipo=h.cod_tipo;

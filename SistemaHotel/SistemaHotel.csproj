@@ -48,7 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Control\CCliente.cs" />
-    <Compile Include="Model\ConeccionBD.cs" />
+    <Compile Include="Model\ConexionBD.cs" />
     <Compile Include="Model\MCliente.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

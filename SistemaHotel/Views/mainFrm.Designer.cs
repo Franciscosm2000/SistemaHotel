@@ -44,7 +44,7 @@
             this.operacionesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(584, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -60,14 +60,14 @@
             // clienteToolStripMenuItem
             // 
             this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.clienteToolStripMenuItem.Text = "Cliente";
             this.clienteToolStripMenuItem.Click += new System.EventHandler(this.clienteToolStripMenuItem_Click);
             // 
             // habitaciónToolStripMenuItem
             // 
             this.habitaciónToolStripMenuItem.Name = "habitaciónToolStripMenuItem";
-            this.habitaciónToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.habitaciónToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.habitaciónToolStripMenuItem.Text = "Habitación ";
             // 
             // operacionesToolStripMenuItem
@@ -78,22 +78,27 @@
             // 
             // pnlControlUsuario
             // 
-            this.pnlControlUsuario.Location = new System.Drawing.Point(12, 40);
+            this.pnlControlUsuario.AutoSize = true;
+            this.pnlControlUsuario.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.pnlControlUsuario.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlControlUsuario.Location = new System.Drawing.Point(0, 24);
             this.pnlControlUsuario.Name = "pnlControlUsuario";
-            this.pnlControlUsuario.Size = new System.Drawing.Size(776, 398);
+            this.pnlControlUsuario.Size = new System.Drawing.Size(584, 337);
             this.pnlControlUsuario.TabIndex = 1;
             // 
             // mainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.AutoScroll = true;
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(584, 361);
             this.Controls.Add(this.pnlControlUsuario);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximizeBox = false;
             this.Name = "mainFrm";
-            this.Text = "Form1";
+            this.Text = "SistemaHotel";
+            this.Load += new System.EventHandler(this.mainFrm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

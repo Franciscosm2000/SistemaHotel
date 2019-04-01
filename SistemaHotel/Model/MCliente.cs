@@ -11,61 +11,74 @@ namespace SistemaHotel.Model
 {
     class MCliente
     {
-        private String P_Nombre;
-        private String S_Nombre;
-        private String P_Apellido;
-        private String S_Apellido;
-        private String Tel;
-        private String Direccion;
-        private String Correo;
+        private int id_cliente;
+        private String p_Nombre;
+        private String s_Nombre;
+        private String p_Apellido;
+        private String s_Apellido;
+        private String tel;
+        private String direccion;
+        private String correo;
+
+        
 
         //Creacion de Metodos Get y set
-        public string P_Nombre1 { get => P_Nombre; set => P_Nombre = value; }
-        public string S_Nombre1 { get => S_Nombre; set => S_Nombre = value; }
-        public string P_Apellido1 { get => P_Apellido; set => P_Apellido = value; }
-        public string S_Apellido1 { get => S_Apellido; set => S_Apellido = value; }
-        public string Tel1 { get => Tel; set => Tel = value; }
-        public string Direccion1 { get => Direccion; set => Direccion = value; }
-        public string Correo1 { get => Correo; set => Correo = value; }
+
 
         //Constructor
-        public MCliente(String p_n, String s_n, String p_a, String s_a, String tel, String direccion, String correo)
+        
+
+        public MCliente() { }
+
+        public MCliente(int id_cliente, string p_Nombre, string s_Nombre, string p_Apellido, string s_Apellido, string tel, string direccion, string correo)
         {
-            this.P_Nombre = p_n;
-            this.S_Nombre = s_n;
-            this.P_Apellido = p_a;
-            this.S_Apellido = s_a;
-            this.Tel = tel;
-            this.Direccion = direccion;
-            this.Correo = correo;
+            this.id_cliente = id_cliente;
+            this.p_Nombre = p_Nombre;
+            this.s_Nombre = s_Nombre;
+            this.p_Apellido = p_Apellido;
+            this.s_Apellido = s_Apellido;
+            this.tel = tel;
+            this.direccion = direccion;
+            this.correo = correo;
         }
 
-        //Creacion de  Metodos 
+        public int Id_cliente { get => id_cliente; set => id_cliente = value; }
+        public string P_Nombre { get => p_Nombre; set => p_Nombre = value; }
+        public string S_Nombre { get => s_Nombre; set => s_Nombre = value; }
+        public string P_Apellido { get => p_Apellido; set => p_Apellido = value; }
+        public string S_Apellido { get => s_Apellido; set => s_Apellido = value; }
+        public string Tel { get => tel; set => tel = value; }
+        public string Direccion { get => direccion; set => direccion = value; }
+        public string Correo { get => correo; set => correo = value; }
 
-        private ConeccionBD coneccion = new ConeccionBD();
-        private SqlCommand comando = new SqlCommand();
-        private SqlDataReader leer;
+        //Creacion de  Metodos 
 
         //Metodo de agregar Cliente 
 
         public void AgregarCliente( MCliente datos)
         {
-            comando.Connection = coneccion.AbrirConeccion(); //abrimos coneccion
-            comando.CommandText=("Insertar_Cliente"); //Especificamos el nombre procedimiento almacenado
-            comando.CommandType = CommandType.StoredProcedure; // decimos que es de tipo procedimiento almacenado
+            //BAD PROCEDURE
+        }
+        public DataTable show()
+        {
+            DataTable res = new DataTable();
+            SqlConnection conn = new SqlConnection();
+            try
+            {
+                conn.ConnectionString = ConexionBD.DATABASE_URL;
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = "Mostrar_Clientes";
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(res);
 
-            //LLENANDO PARAMETROS
-            comando.Parameters.AddWithValue("@p_nom ",datos.P_Nombre1);
-            comando.Parameters.AddWithValue("@s_nom ", datos.S_Nombre1);
-            comando.Parameters.AddWithValue("@p_apell ", datos.P_Apellido1);
-            comando.Parameters.AddWithValue("@s_apell ", datos.S_Apellido1);
-            comando.Parameters.AddWithValue("@dir", datos.Direccion1);
-            comando.Parameters.AddWithValue("@tel ", datos.Tel1);
-            comando.Parameters.AddWithValue("@corr ", datos.Correo1);
-            comando.ExecuteNonQuery(); //Ejecutamos Instrucciones
-            comando.Parameters.Clear(); //Luego de haver ingresado los datos, limpiamos los parametros para evitar cualquier tipo de error.
-
-           // comando.Connection = coneccion.CerrarConeccion();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error en la conexion");
+            }
+            return res;
         }
 
     }
