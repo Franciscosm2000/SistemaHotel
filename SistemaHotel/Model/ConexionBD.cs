@@ -11,6 +11,6 @@ namespace SistemaHotel.Model
     class ConexionBD
     {
         //NO USAR INTEGRATED SECURITY
-        public static String DATABASE_URL = "Data Source=USER19-UXPC\\SQLEXPRESS; Initial Catalog=Hotel; user=sa; password =SysAdmin547";
+        public static String DATABASE_URL = "Data Source=USER19-UXPC\\SQLEXPRESS; Initial Catalog=Hotel; user=sa; password=SysAdmin547";
     }
 }

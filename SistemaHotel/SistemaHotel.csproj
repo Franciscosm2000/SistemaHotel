@@ -48,6 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Control\CCliente.cs" />
+    <Compile Include="Control\CHabs.cs" />
+    <Compile Include="Model\MHabs.cs" />
     <Compile Include="Model\ConexionBD.cs" />
     <Compile Include="Model\MCliente.cs" />
     <Compile Include="Program.cs" />
@@ -74,6 +76,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\habitacionesDlg.resx">
+      <DependentUpon>habitacionesDlg.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\mainFrm.resx">
       <DependentUpon>mainFrm.cs</DependentUpon>
     </EmbeddedResource>

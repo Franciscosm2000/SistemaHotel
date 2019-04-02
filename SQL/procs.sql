@@ -124,6 +124,12 @@ end
 Select * from #TFecha
 Drop table #TFecha
 
+select * from cliente;
+select * from empleado;
+SELECT * FROM habitacion;
+SELECT * FROM reserva;
+insert into reserva values(4,3,'20190401','CREDITO', 'USD', 'PAGADO');
+INSERT INTO habitacion_reserva VALUES(6,7,'20190407','20190415',250);
 
 CREATE FUNCTION fn_disponibilidad_habitacion(@no_hab int, @f_in date, @f_out date)
 RETURNS VARCHAR(20)

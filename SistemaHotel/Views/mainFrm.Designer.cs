@@ -34,6 +34,7 @@
             this.habitaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlControlUsuario = new System.Windows.Forms.Panel();
+            this.disponibilidadDeHabitacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,18 +61,20 @@
             // clienteToolStripMenuItem
             // 
             this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.clienteToolStripMenuItem.Text = "Cliente";
             this.clienteToolStripMenuItem.Click += new System.EventHandler(this.clienteToolStripMenuItem_Click);
             // 
             // habitaciónToolStripMenuItem
             // 
             this.habitaciónToolStripMenuItem.Name = "habitaciónToolStripMenuItem";
-            this.habitaciónToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.habitaciónToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.habitaciónToolStripMenuItem.Text = "Habitación ";
             // 
             // operacionesToolStripMenuItem
             // 
+            this.operacionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.disponibilidadDeHabitacionesToolStripMenuItem});
             this.operacionesToolStripMenuItem.Name = "operacionesToolStripMenuItem";
             this.operacionesToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
             this.operacionesToolStripMenuItem.Text = "Operaciones";
@@ -85,6 +88,13 @@
             this.pnlControlUsuario.Name = "pnlControlUsuario";
             this.pnlControlUsuario.Size = new System.Drawing.Size(584, 337);
             this.pnlControlUsuario.TabIndex = 1;
+            // 
+            // disponibilidadDeHabitacionesToolStripMenuItem
+            // 
+            this.disponibilidadDeHabitacionesToolStripMenuItem.Name = "disponibilidadDeHabitacionesToolStripMenuItem";
+            this.disponibilidadDeHabitacionesToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.disponibilidadDeHabitacionesToolStripMenuItem.Text = "Disponibilidad de Habitaciones";
+            this.disponibilidadDeHabitacionesToolStripMenuItem.Click += new System.EventHandler(this.disponibilidadDeHabitacionesToolStripMenuItem_Click);
             // 
             // mainFrm
             // 
@@ -114,5 +124,6 @@
         private System.Windows.Forms.ToolStripMenuItem habitaciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem operacionesToolStripMenuItem;
         private System.Windows.Forms.Panel pnlControlUsuario;
+        private System.Windows.Forms.ToolStripMenuItem disponibilidadDeHabitacionesToolStripMenuItem;
     }
 }

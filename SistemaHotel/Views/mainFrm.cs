@@ -19,12 +19,18 @@ namespace SistemaHotel.Views
 
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            pnlControlUsuario.Controls.Add(new AgregarCliente());
+           
         }
 
         private void mainFrm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void disponibilidadDeHabitacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            habitacionesDlg dlg = new habitacionesDlg();
+            dlg.Show();
         }
     }
 }
