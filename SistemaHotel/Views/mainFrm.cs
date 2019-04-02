@@ -19,17 +19,24 @@ namespace SistemaHotel.Views
 
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+            clienteDlg dlg = new clienteDlg();
+            dlg.Show();
         }
 
         private void mainFrm_Load(object sender, EventArgs e)
         {
-
+            this.IsMdiContainer = true;
         }
 
         private void disponibilidadDeHabitacionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             habitacionesDlg dlg = new habitacionesDlg();
+            dlg.Show();
+        }
+
+        private void reservaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reserva dlg = new Reserva();
             dlg.Show();
         }
     }

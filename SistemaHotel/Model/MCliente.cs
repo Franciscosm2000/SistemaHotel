@@ -30,9 +30,8 @@ namespace SistemaHotel.Model
 
         public MCliente() { }
 
-        public MCliente(int id_cliente, string p_Nombre, string s_Nombre, string p_Apellido, string s_Apellido, string tel, string direccion, string correo)
+        public MCliente(string p_Nombre, string s_Nombre, string p_Apellido, string s_Apellido, string tel, string direccion, string correo)
         {
-            this.id_cliente = id_cliente;
             this.p_Nombre = p_Nombre;
             this.s_Nombre = s_Nombre;
             this.p_Apellido = p_Apellido;
@@ -55,9 +54,34 @@ namespace SistemaHotel.Model
 
         //Metodo de agregar Cliente 
 
-        public void AgregarCliente( MCliente datos)
+        public void AgregarCliente(MCliente datos)
         {
-            //BAD PROCEDURE
+            SqlConnection cn = new SqlConnection();
+            try
+            {
+                cn.ConnectionString = ConexionBD.DATABASE_URL;
+
+                SqlCommand comando = new SqlCommand();
+                comando.Connection = cn;
+                comando.CommandText = "Insertar_Cliente";
+                comando.CommandType = CommandType.StoredProcedure;
+
+                comando.Parameters.AddWithValue("@p_n", datos.p_Nombre);
+                comando.Parameters.AddWithValue("@s_n", datos.s_Nombre);
+                comando.Parameters.AddWithValue("@p_apell", datos.p_Apellido);
+                comando.Parameters.AddWithValue("@s_apell", datos.s_Apellido);
+                comando.Parameters.AddWithValue("@dir", datos.direccion);
+                comando.Parameters.AddWithValue("@tel", datos.tel);
+                comando.Parameters.AddWithValue("@corr", datos.correo);
+                comando.ExecuteNonQuery();
+                comando.Parameters.Clear();
+
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("Error en la conexion");
+            }
         }
         public DataTable show()
         {
