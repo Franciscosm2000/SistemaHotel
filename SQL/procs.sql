@@ -71,8 +71,8 @@ AS
 
 
 
-CREATE PROCEDURE Disponibilidad_Habitacion
-@IdHabitación int, @Fechaentrada date, @Fechasalida date
+Alter PROCEDURE Disponibilidad_Habitacion
+@no_hab int, @f_in date, @f_out date
 as
 
 Create table #TFecha 
@@ -98,7 +98,7 @@ begin
 set @Fecha = (Select Fecha from #TFecha where IdTFecha = @Contador)
 if not exists(Select * from habitacion_reserva hr
               where @Fecha >= hr.fecha_entrada and @Fecha < hr.fecha_salida
-			  and hr.no_habitacion = @IdHabitación
+			  and hr.no_habitacion = @no_hab
 			   )
 			   begin
 	          update #TFecha set Estado = 'Disponible' 
@@ -149,7 +149,7 @@ AS BEGIN
 		END
 		RETURN @stat;
 	END
-
+exec disponibilidad_hab '20190406', '20190416'
 Alter PROCEDURE disponibilidad_hab @f_in date, @f_out date
 AS
 	SELECT h.no_habitacion as [N° Habitación],

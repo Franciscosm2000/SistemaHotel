@@ -18,5 +18,13 @@ namespace SistemaHotel.Control
             }
             return new MHabs().habs_en_fechas(f_in, f_out);
         }
+        public static DataTable disponibilidad_hab(int no_hab,DateTime f_in, DateTime f_out)
+        {
+            if (f_in >= f_out || f_in < DateTime.Today || f_out < DateTime.Today || f_in == null || f_out == null)
+            {
+                throw new Exception("Error de fechas");
+            }
+            return new MHabs().disponibilidad_habs(no_hab,f_in, f_out);
+        }
     }
 }

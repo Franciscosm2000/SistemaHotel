@@ -44,5 +44,35 @@ namespace SistemaHotel.Views
                 MsgError(ex.Message);
             }
         }
+
+        private void disponBtn_Click(object sender, EventArgs e)
+        {
+            if (f_inDTP.Value > f_outDTP.Value || f_inDTP.Value < DateTime.Now || f_outDTP.Value < DateTime.Now)
+            {
+                MsgError("Las fechas no se han insertado correctamente");
+                return;
+            }
+            else if (Convert.ToInt16(nohabSelec.Value) <=0)
+            {
+                MsgError("N° de Habitación no válido");
+                return;
+            }
+            try
+            {
+                DataTable tab = CHabs.disponibilidad_hab(Convert.ToInt16(nohabSelec.Value), f_inDTP.Value, f_outDTP.Value);
+                //si la consulta regresa vacia, indicaria que el n° de habitación insertado no es valido
+                if (tab == null)
+                {
+                    MsgError("El n° de habitación proporcionado NO ES VALIDO");
+                    return;
+                }
+                mainGridV.DataSource = tab;
+                mainGridV.Columns["IdTFecha"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MsgError(ex.Message);
+            }
+        }
     }
 }

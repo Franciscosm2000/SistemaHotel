@@ -137,6 +137,7 @@
             this.disponBtn.TabIndex = 0;
             this.disponBtn.Text = "Disponibilidad de la habitación en rango de fechas";
             this.disponBtn.UseVisualStyleBackColor = true;
+            this.disponBtn.Click += new System.EventHandler(this.disponBtn_Click);
             // 
             // perfechasBtn
             // 
