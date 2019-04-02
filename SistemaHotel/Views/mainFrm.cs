@@ -21,6 +21,7 @@ namespace SistemaHotel.Views
         {
             clienteDlg dlg = new clienteDlg();
             dlg.Show();
+            
         }
 
         private void mainFrm_Load(object sender, EventArgs e)

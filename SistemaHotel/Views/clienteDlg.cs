@@ -21,10 +21,17 @@ namespace SistemaHotel.Views
         private void btnguardar_Click(object sender, EventArgs e)
         {
             CCliente cliente = new CCliente();
-            cliente.AgregarCliente(txbPnombre.Text, txbSnombre.Text, txbPapellido.Text, txbSapellido.Text,
-               txbTel.Text, txbDireccion.Text, txbCorreo.Text);
+            try
+            {
+                cliente.AgregarCliente(txbPnombre.Text, txbSnombre.Text, txbPapellido.Text, txbSapellido.Text,
+                txbTel.Text, txbDireccion.Text, txbCorreo.Text);
+            }
+            catch (Exception ex)
+            {
+                msgerror(ex.Message);
+            }    
             MessageBox.Show("Agregado Correctamente...");
-
+            refresh();
         }
 
         private void clienteDlg_Load(object sender, EventArgs e)
@@ -40,8 +47,17 @@ namespace SistemaHotel.Views
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                msgerror(ex.Message);
             }
+        }
+
+        private void mainGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            mainGV.DataSource = CCliente.show();
+        }
+        private void msgerror(String msg)
+        {
+            MessageBox.Show(this, msg, "Sistema de Informacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

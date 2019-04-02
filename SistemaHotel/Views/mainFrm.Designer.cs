@@ -32,10 +32,10 @@
             this.catálogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.habitaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reservaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.disponibilidadDeHabitacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlControlUsuario = new System.Windows.Forms.Panel();
-            this.reservaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,15 +63,22 @@
             // clienteToolStripMenuItem
             // 
             this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.clienteToolStripMenuItem.Text = "Cliente";
             this.clienteToolStripMenuItem.Click += new System.EventHandler(this.clienteToolStripMenuItem_Click);
             // 
             // habitaciónToolStripMenuItem
             // 
             this.habitaciónToolStripMenuItem.Name = "habitaciónToolStripMenuItem";
-            this.habitaciónToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.habitaciónToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.habitaciónToolStripMenuItem.Text = "Habitación ";
+            // 
+            // reservaToolStripMenuItem
+            // 
+            this.reservaToolStripMenuItem.Name = "reservaToolStripMenuItem";
+            this.reservaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.reservaToolStripMenuItem.Text = "Reserva";
+            this.reservaToolStripMenuItem.Click += new System.EventHandler(this.reservaToolStripMenuItem_Click);
             // 
             // operacionesToolStripMenuItem
             // 
@@ -98,22 +105,15 @@
             this.pnlControlUsuario.Size = new System.Drawing.Size(584, 337);
             this.pnlControlUsuario.TabIndex = 1;
             // 
-            // reservaToolStripMenuItem
-            // 
-            this.reservaToolStripMenuItem.Name = "reservaToolStripMenuItem";
-            this.reservaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.reservaToolStripMenuItem.Text = "Reserva";
-            this.reservaToolStripMenuItem.Click += new System.EventHandler(this.reservaToolStripMenuItem_Click);
-            // 
             // mainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(584, 361);
             this.Controls.Add(this.pnlControlUsuario);
             this.Controls.Add(this.menuStrip1);
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "mainFrm";
             this.Text = "SistemaHotel";
