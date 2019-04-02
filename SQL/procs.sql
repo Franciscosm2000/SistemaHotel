@@ -82,9 +82,9 @@ Create table #TFecha
 
   Declare @Contador int, @Fecha date, @Días int
  Set @Contador = 1
- set @Fecha = @Fechaentrada
- Set @Días = datediff(day,@Fechaentrada, @Fechasalida)
- while (@Contador <= (datediff(day,@Fechaentrada, @Fechasalida)+1))
+ set @Fecha = @f_in
+ Set @Días = datediff(day,@f_in, @f_out)
+ while (@Contador <= (datediff(day,@f_in, @f_out)+1))
  begin
  insert into #TFecha (Fecha) values (@Fecha)
  set @Fecha = dateadd(day,1, @Fecha )
@@ -130,6 +130,8 @@ SELECT * FROM habitacion;
 SELECT * FROM reserva;
 insert into reserva values(4,3,'20190401','CREDITO', 'USD', 'PAGADO');
 INSERT INTO habitacion_reserva VALUES(6,7,'20190407','20190415',250);
+
+exec Disponibilidad_Habitacion 6,'20190402','20190411';
 
 CREATE FUNCTION fn_disponibilidad_habitacion(@no_hab int, @f_in date, @f_out date)
 RETURNS VARCHAR(20)
