@@ -18,35 +18,32 @@ namespace SistemaHotel.Views
         public Reserva()
         {
             InitializeComponent();
+            CenterToScreen();
+            Bitmap img = new Bitmap(Application.StartupPath + @"\background\fondo1.jpg");
+            this.BackgroundImage = img;
+            this.BackgroundImageLayout = ImageLayout.Stretch;
         }
 
-        private void calendario_reserva_DateChanged(object sender, DateRangeEventArgs e)
-        {
-            fecha_entrada_txt.Text = calendario_reserva.SelectionEnd.Date.ToString();
-            calendario_reserva.Visible = false;
-        }
-
-        private void fecha_entrada_txt_TextChanged(object sender, EventArgs e)
-        {
-            calendario_reserva.Visible = true;
-        }
+        
 
         private void combo_formapago_SelectedIndexChanged(object sender, EventArgs e)
         {
-            calendario_reserva.Visible = false;
+            
         }
 
         private void combo_idempleado_SelectedIndexChanged(object sender, EventArgs e)
         {
-            calendario_reserva.Visible = false;
             
-            combo_idempleado.Items.Add(CReserva.listado_empleado());
         }
 
+        private void mostrar()
+        {
+            this.datos_reserva.DataSource = CReserva.visualizar();
+        }
+        
         private void Reserva_Load(object sender, EventArgs e)
         {
-            calendario_reserva.Visible = false;
-            
+            this.mostrar();
         }
 
         private void MensajeOk(string mensaje)
@@ -59,41 +56,41 @@ namespace SistemaHotel.Views
         {
             MessageBox.Show(mensaje, "Sistema de Información", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-        
+
         private void boton_agregar_Click(object sender, EventArgs e)
         {
+            Console.WriteLine(Convert.ToDateTime(fecha_de_la_reserva.Text));
             try
             {
-                string rpta = "";
+                CReserva entrada = new CReserva();
 
-                rpta = CReserva.insertar_datos(
-                    Convert.ToInt32(combo_idcliente.SelectedItem),
-                    Convert.ToInt32(combo_idempleado.SelectedItem),
-                    fecha_entrada_txt.Text,
+                entrada.insertar_datos(
+                    Convert.ToInt32(Id_cliente_txt.Text),
+                    Convert.ToInt32(Id_empleado_txt.Text),
+                    Convert.ToDateTime(fecha_de_la_reserva.Text),
                     Convert.ToString(combo_formapago.SelectedItem),
                     Convert.ToString(combo_formadivisa.SelectedItem),
                     Convert.ToString(combo_stat.SelectedItem));
-                    MensajeOk("GUARDADO CORRECTAMENTE");
+
+                MensajeOk("GUARDADO CORRECTAMENTE");
             }
             catch (Exception ex)
             {
-                MensajeError(Convert.ToString(ex));
-               
-            }       
+                MessageBox.Show(Convert.ToString(ex));
+            }
+
+            this.mostrar();
+            /*if (MessageBox.Show("Desea Editar o Buscar un dato de la reserva", "RESERVA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                busqueda_txt.Show();
+            }
+            else
+            {
+                busqueda_txt.Hide();
+            }*/
 
 
-    
         }
 
-        private void combo_idcliente_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            combo_idcliente.Items.Add(CReserva.listado_cliente());
-        }
-
-        private void boton_visualizar_Click(object sender, EventArgs e)
-        {
-            //this.dataCliente.DataSource = NCliente.Mostrar();
-            //this.lista_de_las_reservas = CReserva.
-        }
     }
 }

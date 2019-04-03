@@ -10,8 +10,15 @@ namespace SistemaHotel.Control
 {
     class CReserva
     {
+        public static DataTable visualizar()
+        {
+            MReserva entrada = new MReserva();
+            return entrada.mostrar_reserva();
+
+        }
+
         //metodo para inserta los datos de la reserva
-        public static string insertar_datos(int idcliente, int idempleado, string fechareserva,
+        public void insertar_datos(int idcliente, int idempleado, DateTime fechareserva,
             string formapago, string divisa, string stat)
         {
             MReserva obj = new MReserva();
@@ -21,24 +28,10 @@ namespace SistemaHotel.Control
             obj.Forma_pago = formapago;
             obj.Divisa = divisa;
             obj.Stat = stat;
-            return obj.Insertar(obj);
+            obj.Insertar(obj);
+            
         }
 
-        public static DataTable listado_cliente()
-        {
-            return new MReserva().listado_cliente();
-        }
-
-        public static DataTable listado_empleado()
-        {
-            return new MReserva().listado_empleado();
-        }
-
-        public DataTable show()
-        {
-            MReserva reserva = new MReserva();
-            return reserva.show();
-        }
 
     }
 }
