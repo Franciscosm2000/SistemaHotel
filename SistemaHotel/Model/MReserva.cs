@@ -41,6 +41,52 @@ namespace SistemaHotel.Model
 
         public MReserva() { }
 
+
+        public DataTable mostrar_los_clientes()
+        {
+            DataTable visual = new DataTable();
+            SqlConnection cone = new SqlConnection();
+            try
+            {
+                cone.ConnectionString = ConexionBD.DATABASE_URL;
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cone;
+                cmd.CommandText = "clientes";
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(visual);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en la conexion\n" + ex.Message);
+            }
+            return visual;
+        }
+
+        public DataTable mostrar_los_empleados()
+        {
+            DataTable visual = new DataTable();
+            SqlConnection cone = new SqlConnection();
+            try
+            {
+                cone.ConnectionString = ConexionBD.DATABASE_URL;
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cone;
+                cmd.CommandText = "empleados";
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(visual);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en la conexion\n" + ex.Message);
+            }
+            return visual;
+        }
+
+
         //llamando al proceso almacenado de mostrar reserva
         public DataTable mostrar_reserva()
         {
@@ -59,7 +105,7 @@ namespace SistemaHotel.Model
             }
             catch (Exception ex)
             {
-                visual = null;
+                throw new Exception("Error en la conexion\n" + ex.Message);
             }
             return visual;
         }

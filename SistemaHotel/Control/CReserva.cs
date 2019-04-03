@@ -17,6 +17,18 @@ namespace SistemaHotel.Control
 
         }
 
+        public static DataTable visualizar_2()
+        {
+            MReserva entrada = new MReserva();
+            return entrada.mostrar_los_clientes();
+        }
+
+        public static DataTable visualizar_3()
+        {
+            MReserva entrada = new MReserva();
+            return entrada.mostrar_los_empleados();
+        }
+        
         //metodo para inserta los datos de la reserva
         public void insertar_datos(int idcliente, int idempleado, DateTime fechareserva,
             string formapago, string divisa, string stat)

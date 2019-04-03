@@ -39,11 +39,14 @@ namespace SistemaHotel.Views
         private void mostrar()
         {
             this.datos_reserva.DataSource = CReserva.visualizar();
+            this.datos_clientes.DataSource = CReserva.visualizar_2();
+            this.datos_empleados.DataSource = CReserva.visualizar_3();
         }
         
         private void Reserva_Load(object sender, EventArgs e)
         {
             this.mostrar();
+            busqueda_txt.Hide();
         }
 
         private void MensajeOk(string mensaje)
@@ -80,17 +83,27 @@ namespace SistemaHotel.Views
             }
 
             this.mostrar();
-            /*if (MessageBox.Show("Desea Editar o Buscar un dato de la reserva", "RESERVA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            if (MessageBox.Show("Desea Editar o Buscar un dato de la reserva", "RESERVA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 busqueda_txt.Show();
             }
             else
             {
                 busqueda_txt.Hide();
-            }*/
+            }
 
 
         }
 
+        private void datos_clientes_DoubleClick(object sender, EventArgs e)
+        {
+            Id_cliente_txt.Text = Convert.ToString(this.datos_clientes.CurrentRow.Cells["ID del cliente"].Value);
+        }
+
+        private void datos_empleados_DoubleClick(object sender, EventArgs e)
+        {
+            Id_empleado_txt.Text = Convert.ToString(this.datos_empleados.CurrentRow.Cells["ID del Empleado"].Value);
+        }
     }
 }
