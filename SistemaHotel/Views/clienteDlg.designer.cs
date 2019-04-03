@@ -322,6 +322,7 @@
             // 
             // mainGV
             // 
+            this.mainGV.AllowUserToAddRows = false;
             this.mainGV.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
             this.mainGV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.mainGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -337,6 +338,7 @@
             this.mainGV.GridColor = System.Drawing.Color.SteelBlue;
             this.mainGV.Location = new System.Drawing.Point(6, 47);
             this.mainGV.Name = "mainGV";
+            this.mainGV.ReadOnly = true;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.SteelBlue;
@@ -344,6 +346,7 @@
             this.mainGV.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.mainGV.Size = new System.Drawing.Size(592, 179);
             this.mainGV.TabIndex = 0;
+            this.mainGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mainGV_CellContentClick);
             // 
             // clienteDlg
             // 

@@ -56,24 +56,25 @@ namespace SistemaHotel.Model
 
         public void AgregarCliente(MCliente datos)
         {
-            SqlConnection cn = new SqlConnection();
+            SqlConnection conn = new SqlConnection();
             try
             {
-                cn.ConnectionString = ConexionBD.DATABASE_URL;
-
+                conn.ConnectionString = ConexionBD.DATABASE_URL;
+                conn.Open();
                 SqlCommand comando = new SqlCommand();
-                comando.Connection = cn;
+                comando.Connection = conn;
                 comando.CommandText = "Insertar_Cliente";
                 comando.CommandType = CommandType.StoredProcedure;
 
-                comando.Parameters.AddWithValue("@p_n", datos.p_Nombre);
-                comando.Parameters.AddWithValue("@s_n", datos.s_Nombre);
-                comando.Parameters.AddWithValue("@p_apell", datos.p_Apellido);
-                comando.Parameters.AddWithValue("@s_apell", datos.s_Apellido);
-                comando.Parameters.AddWithValue("@dir", datos.direccion);
-                comando.Parameters.AddWithValue("@tel", datos.tel);
-                comando.Parameters.AddWithValue("@corr", datos.correo);
+                comando.Parameters.AddWithValue("@p_nom", datos.P_Nombre);
+                comando.Parameters.AddWithValue("@s_nom", datos.S_Nombre);
+                comando.Parameters.AddWithValue("@p_apell", datos.P_Apellido);
+                comando.Parameters.AddWithValue("@s_apell", datos.S_Apellido);
+                comando.Parameters.AddWithValue("@dir", datos.Direccion);
+                comando.Parameters.AddWithValue("@tel", datos.Tel);
+                comando.Parameters.AddWithValue("@corr", datos.Correo);
                 comando.ExecuteNonQuery();
+
                 comando.Parameters.Clear();
 
             }
@@ -101,6 +102,11 @@ namespace SistemaHotel.Model
             catch (Exception ex)
             {
                 throw new Exception("Error en la conexion\n"+ex.Message);
+            }
+            finally
+            {
+                //if(conn.State=)
+                    conn.Close();
             }
             return res;
         }
