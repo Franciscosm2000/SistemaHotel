@@ -77,10 +77,10 @@ namespace SistemaHotel.Model
                 comando.Parameters.Clear();
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw new Exception("Error en la conexion");
+                throw new Exception("Error en la conexion\n"+ex.Message);
             }
         }
         public DataTable show()
@@ -98,9 +98,9 @@ namespace SistemaHotel.Model
                 adp.Fill(res);
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new Exception("Error en la conexion");
+                throw new Exception("Error en la conexion\n"+ex.Message);
             }
             return res;
         }

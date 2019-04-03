@@ -39,5 +39,9 @@ namespace SistemaHotel.Views
             Reserva dlg = new Reserva();
             dlg.Show();
         }
+
+        private void pnlControlUsuario_Paint(object sender, PaintEventArgs e)
+        {
+                    }
     }
 }
