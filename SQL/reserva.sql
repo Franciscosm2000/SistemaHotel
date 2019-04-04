@@ -195,3 +195,13 @@ from habitacion_reserva hr;
 
 execute insertar_habitacion_reserva 9,12,'2019-04-03','2019-04-04',150
 
+---eliminar habitacion reserva
+alter procedure eliminar_un_id_de_ha_reserva
+@id_hab_reserva int
+as
+delete from habitacion_reserva
+where id_hab_reserva = @id_hab_reserva
+
+execute eliminar_un_id_de_ha_reserva 12
+
+execute mostrar_habitacion_reserva
