@@ -43,6 +43,8 @@ namespace SistemaHotel.Views
         {
             this.mostrar();
             busqueda_txt.Hide();
+            Id_cliente_txt.Enabled = false;
+            Id_empleado_txt.Enabled = false;
         }
 
         private void MensajeOk(string mensaje)

@@ -34,6 +34,9 @@ namespace SistemaHotel.Views
         private void HabitacionReserva_Load(object sender, EventArgs e)
         {
             this.mostrar();
+            No_habitacion.Enabled = false;
+            Id_reserva.Enabled = false;
+            Precio_habitacion.Enabled = false;
         }
         private void MensajeOk(string mensaje)
         {

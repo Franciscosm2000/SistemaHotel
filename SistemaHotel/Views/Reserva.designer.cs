@@ -51,6 +51,9 @@
             this.boton_editar = new System.Windows.Forms.Button();
             this.boton_agregar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.boton_eliminar = new System.Windows.Forms.Button();
             this.grupo_reserva.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datos_empleados)).BeginInit();
@@ -66,7 +69,7 @@
             this.grupo_reserva.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grupo_reserva.Location = new System.Drawing.Point(23, 13);
             this.grupo_reserva.Name = "grupo_reserva";
-            this.grupo_reserva.Size = new System.Drawing.Size(348, 324);
+            this.grupo_reserva.Size = new System.Drawing.Size(348, 294);
             this.grupo_reserva.TabIndex = 0;
             this.grupo_reserva.TabStop = false;
             this.grupo_reserva.Text = "Ingreso de datos de la reserva";
@@ -224,43 +227,43 @@
             // datos_empleados
             // 
             this.datos_empleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datos_empleados.Location = new System.Drawing.Point(587, 22);
+            this.datos_empleados.Location = new System.Drawing.Point(386, 187);
             this.datos_empleados.Name = "datos_empleados";
-            this.datos_empleados.Size = new System.Drawing.Size(185, 161);
+            this.datos_empleados.Size = new System.Drawing.Size(349, 120);
             this.datos_empleados.TabIndex = 25;
             this.datos_empleados.DoubleClick += new System.EventHandler(this.datos_empleados_DoubleClick);
             // 
             // datos_clientes
             // 
             this.datos_clientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datos_clientes.Location = new System.Drawing.Point(386, 22);
+            this.datos_clientes.Location = new System.Drawing.Point(386, 35);
             this.datos_clientes.Name = "datos_clientes";
-            this.datos_clientes.Size = new System.Drawing.Size(185, 161);
+            this.datos_clientes.Size = new System.Drawing.Size(349, 120);
             this.datos_clientes.TabIndex = 24;
             this.datos_clientes.DoubleClick += new System.EventHandler(this.datos_clientes_DoubleClick);
             // 
             // datos_reserva
             // 
             this.datos_reserva.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datos_reserva.Location = new System.Drawing.Point(23, 352);
+            this.datos_reserva.Location = new System.Drawing.Point(23, 333);
             this.datos_reserva.Name = "datos_reserva";
-            this.datos_reserva.Size = new System.Drawing.Size(749, 205);
+            this.datos_reserva.Size = new System.Drawing.Size(558, 390);
             this.datos_reserva.TabIndex = 1;
             // 
             // busqueda_txt
             // 
-            this.busqueda_txt.Location = new System.Drawing.Point(61, 15);
+            this.busqueda_txt.Location = new System.Drawing.Point(26, 90);
             this.busqueda_txt.Name = "busqueda_txt";
-            this.busqueda_txt.Size = new System.Drawing.Size(263, 29);
+            this.busqueda_txt.Size = new System.Drawing.Size(135, 29);
             this.busqueda_txt.TabIndex = 27;
             // 
             // boton_buscar
             // 
             this.boton_buscar.Image = ((System.Drawing.Image)(resources.GetObject("boton_buscar.Image")));
             this.boton_buscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.boton_buscar.Location = new System.Drawing.Point(234, 74);
+            this.boton_buscar.Location = new System.Drawing.Point(13, 214);
             this.boton_buscar.Name = "boton_buscar";
-            this.boton_buscar.Size = new System.Drawing.Size(136, 57);
+            this.boton_buscar.Size = new System.Drawing.Size(162, 57);
             this.boton_buscar.TabIndex = 26;
             this.boton_buscar.Text = "BUSCAR";
             this.boton_buscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -270,9 +273,9 @@
             // 
             this.boton_editar.Image = ((System.Drawing.Image)(resources.GetObject("boton_editar.Image")));
             this.boton_editar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.boton_editar.Location = new System.Drawing.Point(93, 74);
+            this.boton_editar.Location = new System.Drawing.Point(13, 136);
             this.boton_editar.Name = "boton_editar";
-            this.boton_editar.Size = new System.Drawing.Size(135, 57);
+            this.boton_editar.Size = new System.Drawing.Size(162, 57);
             this.boton_editar.TabIndex = 25;
             this.boton_editar.Text = "EDITAR";
             this.boton_editar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -281,7 +284,7 @@
             // boton_agregar
             // 
             this.boton_agregar.Image = ((System.Drawing.Image)(resources.GetObject("boton_agregar.Image")));
-            this.boton_agregar.Location = new System.Drawing.Point(13, 61);
+            this.boton_agregar.Location = new System.Drawing.Point(53, 14);
             this.boton_agregar.Name = "boton_agregar";
             this.boton_agregar.Size = new System.Drawing.Size(74, 70);
             this.boton_agregar.TabIndex = 24;
@@ -292,21 +295,56 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.boton_eliminar);
             this.panel1.Controls.Add(this.busqueda_txt);
             this.panel1.Controls.Add(this.boton_agregar);
             this.panel1.Controls.Add(this.boton_editar);
             this.panel1.Controls.Add(this.boton_buscar);
             this.panel1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(388, 189);
+            this.panel1.Location = new System.Drawing.Point(587, 333);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(384, 148);
+            this.panel1.Size = new System.Drawing.Size(190, 390);
             this.panel1.TabIndex = 28;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(382, 13);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(107, 22);
+            this.label7.TabIndex = 29;
+            this.label7.Text = "CLIENTES";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(382, 162);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(131, 22);
+            this.label8.TabIndex = 30;
+            this.label8.Text = "EMPLEADOS";
+            // 
+            // boton_eliminar
+            // 
+            this.boton_eliminar.Image = ((System.Drawing.Image)(resources.GetObject("boton_eliminar.Image")));
+            this.boton_eliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.boton_eliminar.Location = new System.Drawing.Point(13, 296);
+            this.boton_eliminar.Name = "boton_eliminar";
+            this.boton_eliminar.Size = new System.Drawing.Size(162, 57);
+            this.boton_eliminar.TabIndex = 28;
+            this.boton_eliminar.Text = "ELIMINAR";
+            this.boton_eliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.boton_eliminar.UseVisualStyleBackColor = true;
             // 
             // Reserva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 581);
+            this.ClientSize = new System.Drawing.Size(834, 741);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.datos_empleados);
             this.Controls.Add(this.datos_clientes);
@@ -324,6 +362,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -351,5 +390,8 @@
         private System.Windows.Forms.Button boton_editar;
         private System.Windows.Forms.Button boton_agregar;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button boton_eliminar;
     }
 }
