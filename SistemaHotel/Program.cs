@@ -17,7 +17,7 @@ namespace SistemaHotel
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Reserva());
+            Application.Run(new HabitacionReserva());
         }
     }
 }

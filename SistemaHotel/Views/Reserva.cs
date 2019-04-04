@@ -22,16 +22,12 @@ namespace SistemaHotel.Views
             Bitmap img = new Bitmap(Application.StartupPath + @"\background\fondo1.jpg");
             this.BackgroundImage = img;
             this.BackgroundImageLayout = ImageLayout.Stretch;
+            boton_agregar.Enabled = false;
         }
 
         
 
         private void combo_formapago_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void combo_idempleado_SelectedIndexChanged(object sender, EventArgs e)
         {
             
         }
@@ -104,6 +100,23 @@ namespace SistemaHotel.Views
         private void datos_empleados_DoubleClick(object sender, EventArgs e)
         {
             Id_empleado_txt.Text = Convert.ToString(this.datos_empleados.CurrentRow.Cells["ID del Empleado"].Value);
+        }
+
+        private void verificacion(object sender, EventArgs e)
+        {
+            if (Id_cliente_txt.Text.Length !=0 &&
+                Id_empleado_txt.Text.Length != 0 &&
+                fecha_de_la_reserva.Text.Length != 0 &&
+                combo_formapago.SelectedItem != null &&
+                combo_formadivisa.SelectedItem != null &&
+                combo_stat.SelectedItem != null)
+            {
+                boton_agregar.Enabled = true;
+            }
+            else
+            {
+                boton_agregar.Enabled = false;
+            }
         }
     }
 }

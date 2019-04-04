@@ -186,7 +186,9 @@ namespace SistemaHotel.Model
                 if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
             }
             return rpta;
-        }
+        } 
+
+
 
     }
 }

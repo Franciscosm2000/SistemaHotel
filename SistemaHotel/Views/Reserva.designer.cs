@@ -109,6 +109,7 @@
             this.fecha_de_la_reserva.Name = "fecha_de_la_reserva";
             this.fecha_de_la_reserva.Size = new System.Drawing.Size(144, 26);
             this.fecha_de_la_reserva.TabIndex = 26;
+            this.fecha_de_la_reserva.TabIndexChanged += new System.EventHandler(this.verificacion);
             // 
             // label1
             // 
@@ -125,6 +126,7 @@
             this.Id_empleado_txt.Name = "Id_empleado_txt";
             this.Id_empleado_txt.Size = new System.Drawing.Size(144, 26);
             this.Id_empleado_txt.TabIndex = 2;
+            this.Id_empleado_txt.TextChanged += new System.EventHandler(this.verificacion);
             // 
             // label2
             // 
@@ -141,6 +143,7 @@
             this.Id_cliente_txt.Name = "Id_cliente_txt";
             this.Id_cliente_txt.Size = new System.Drawing.Size(144, 26);
             this.Id_cliente_txt.TabIndex = 1;
+            this.Id_cliente_txt.TextChanged += new System.EventHandler(this.verificacion);
             // 
             // combo_formadivisa
             // 
@@ -153,6 +156,7 @@
             this.combo_formadivisa.Name = "combo_formadivisa";
             this.combo_formadivisa.Size = new System.Drawing.Size(144, 27);
             this.combo_formadivisa.TabIndex = 13;
+            this.combo_formadivisa.TextChanged += new System.EventHandler(this.verificacion);
             // 
             // label6
             // 
@@ -184,6 +188,7 @@
             this.combo_stat.Name = "combo_stat";
             this.combo_stat.Size = new System.Drawing.Size(144, 27);
             this.combo_stat.TabIndex = 14;
+            this.combo_stat.TextChanged += new System.EventHandler(this.verificacion);
             // 
             // label4
             // 
@@ -205,7 +210,7 @@
             this.combo_formapago.Name = "combo_formapago";
             this.combo_formapago.Size = new System.Drawing.Size(144, 27);
             this.combo_formapago.TabIndex = 12;
-            this.combo_formapago.SelectedIndexChanged += new System.EventHandler(this.combo_formapago_SelectedIndexChanged);
+            this.combo_formapago.TextChanged += new System.EventHandler(this.verificacion);
             // 
             // label3
             // 
@@ -281,6 +286,7 @@
             this.boton_agregar.Size = new System.Drawing.Size(74, 70);
             this.boton_agregar.TabIndex = 24;
             this.boton_agregar.UseVisualStyleBackColor = true;
+            this.boton_agregar.TextChanged += new System.EventHandler(this.verificacion);
             this.boton_agregar.Click += new System.EventHandler(this.boton_agregar_Click);
             // 
             // panel1
