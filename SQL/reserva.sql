@@ -23,17 +23,23 @@ from empleado e
 
 execute Empleados
 ---muestra todos los datos de la reserva
-create procedure mostrar_reserva
+alter procedure mostrar_reserva
 as
 select
 a.id_reserva as [ID Reserva],
 a.id_cliente as [ID Cliente],
+c.p_nom + ' ' + c.p_apell as [Nombre del Cliente],
 a.id_empleado as [ID Empleado],
+e.p_nom + ' ' + e.p_apell as [Nombre del Empleado],
 a.fecha_reserva as [Fecha de la Reserva],
 a.forma_pago as [Forma de Pago],
 a.divisa as [Divisa],
 a.stat as [Estado]  
-from reserva a;
+from reserva a
+inner join cliente c
+on c.id_cliente = a.id_cliente
+inner join empleado e
+on e.id_empleado = a.id_empleado
 
 execute mostrar_reserva
 
@@ -63,8 +69,16 @@ from reserva a;
 
 execute insertar_reserva 5,3,'3/4/2019 12:00:00','CHEQUE','NIO','PAGADO'
 
----actualizar reserva
+---eliminar reserva
+create procedure eliminar_un_id_de_reserva
+@id_reserva int
+as
+delete from reserva
+where id_reserva = @id_reserva
 
+execute eliminar_un_id_de_reserva 30
+
+execute mostrar_reserva
 ---editar reserva
 
 create procedure editar_reserva
@@ -88,19 +102,27 @@ where id_reserva = @id_reserva
 execute editar_reserva 4,2,3,'2019-02-02','CREDITO','NIO','PAGADO'
 
 ---busqueda de la reserva guardada
-create procedure buscar_reserva
-@dato date
+alter procedure buscar_reserva
+@Nombre_del_cliente varchar(20)
 as
 select
 a.id_reserva as [ID Reserva],
 a.id_cliente as [ID Cliente],
+c.p_nom + ' ' + c.p_apell as [Nombre del Cliente],
 a.id_empleado as [ID Empleado],
+e.p_nom + ' ' + e.p_apell as [Nombre del Empleado],
 a.fecha_reserva as [Fecha de la Reserva],
 a.forma_pago as [Forma de Pago],
 a.divisa as [Divisa],
 a.stat as [Estado]  
 from reserva a
-where a.fecha_reserva like @dato + '%'
+inner join cliente c
+on c.id_cliente = a.id_cliente
+inner join empleado e
+on e.id_empleado = a.id_empleado
+where c.p_nom + ' ' + c.p_apell like @Nombre_del_cliente + '%'
+
+execute buscar_reserva 'juan lopez'
 
 ---habitacion reserva
 

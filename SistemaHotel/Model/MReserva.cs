@@ -186,9 +186,152 @@ namespace SistemaHotel.Model
                 if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
             }
             return rpta;
-        } 
+        }
+
+        public string Editar(MReserva reserva)
+        {
+            string rpta = "";
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                //Código
+                SqlCon.ConnectionString = ConexionBD.DATABASE_URL;
+                SqlCon.Open();
+
+                //Establecer el Comando
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "editar_reserva";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                // Parámetros del Procedimiento Almacenado
+                SqlParameter idreserva = new SqlParameter();
+                idreserva.ParameterName = "@id_reserva";
+                idreserva.SqlDbType = SqlDbType.Int;
+                //  ParidCliente.Size = 60;
+                idreserva.Value = reserva.Id_reserva;
+                SqlCmd.Parameters.Add(idreserva);
+
+                SqlParameter idcliente = new SqlParameter();
+                idcliente.ParameterName = "@id_cliente";
+                idcliente.SqlDbType = SqlDbType.Int;
+                //idcliente.Size = 60;
+                idcliente.Value = reserva.Id_cliente;
+                SqlCmd.Parameters.Add(idcliente);
+
+                SqlParameter idempleado = new SqlParameter();
+                idempleado.ParameterName = "@id_empleado";
+                idempleado.SqlDbType = SqlDbType.Int;
+                //idempleado.Size = 60;
+                idempleado.Value = reserva.Id_empleado;
+                SqlCmd.Parameters.Add(idempleado);
+
+                SqlParameter fechareserva = new SqlParameter();
+                fechareserva.ParameterName = "@fecha_reserva";
+                fechareserva.SqlDbType = SqlDbType.Date;
+                //fechareserva.Size = 60;
+                fechareserva.Value = reserva.Fecha_reserva;
+                SqlCmd.Parameters.Add(fechareserva);
+
+                SqlParameter formapago = new SqlParameter();
+                formapago.ParameterName = "@forma_pago";
+                formapago.SqlDbType = SqlDbType.VarChar;
+                formapago.Size = 15;
+                formapago.Value = reserva.Forma_pago;
+                SqlCmd.Parameters.Add(formapago);
+
+                SqlParameter divisa = new SqlParameter();
+                divisa.ParameterName = "@divisa";
+                divisa.SqlDbType = SqlDbType.VarChar;
+                divisa.Size = 3;
+                divisa.Value = reserva.Divisa;
+                SqlCmd.Parameters.Add(divisa);
+
+                SqlParameter stat = new SqlParameter();
+                stat.ParameterName = "@stat";
+                stat.SqlDbType = SqlDbType.VarChar;
+                stat.Size = 15;
+                stat.Value = reserva.Stat;
+                SqlCmd.Parameters.Add(stat);
 
 
+                //Ejecutamos nuestro comando
+
+                rpta = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "NO se Ingreso la reserva";
+
+            }
+            catch (Exception ex)
+            {
+                rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return rpta;
+        }
+
+        public DataTable BuscarCliente(string dato)
+        {
+            DataTable DtResultado = new DataTable("Cliente");
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon.ConnectionString = ConexionBD.DATABASE_URL;
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "buscar_reserva";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter nombrecliente = new SqlParameter();
+                nombrecliente.ParameterName = "@Nombre_del_cliente";
+                nombrecliente.SqlDbType = SqlDbType.VarChar;
+                nombrecliente.Size = 20;
+                nombrecliente.Value = dato;
+                SqlCmd.Parameters.Add(nombrecliente);
+
+                SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
+                SqlDat.Fill(DtResultado);
+
+            }
+            catch (Exception ex)
+            {
+                DtResultado = null;
+            }
+            return DtResultado;
+
+        }
+
+        public DataTable EliminarReserva(int idreserva)
+        {
+            DataTable DtResultado = new DataTable("Reserva");
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon.ConnectionString = ConexionBD.DATABASE_URL;
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "eliminar_un_id_de_reserva";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter reserva = new SqlParameter();
+                reserva.ParameterName = "@id_reserva";
+                reserva.SqlDbType = SqlDbType.Int;
+                //nombrecliente.Size = 20;
+                reserva.Value = idreserva;
+                SqlCmd.Parameters.Add(reserva);
+
+                SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
+                SqlDat.Fill(DtResultado);
+
+            }
+            catch (Exception ex)
+            {
+                DtResultado = null;
+            }
+            return DtResultado;
+
+        }
 
     }
 }

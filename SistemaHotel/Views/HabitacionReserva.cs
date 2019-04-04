@@ -102,5 +102,19 @@ namespace SistemaHotel.Views
                 boton_guardar.Enabled = false;
             }
         }
+
+        private void boton_eliminar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Desea Eliminar la Habitacion reserva", "HABITACION RESERVA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                CHabReserva.eliminar_hab_reserva(Convert.ToInt32(this.datos_habitacion_reserva.CurrentRow.Cells["Id de Habitacion Reserva"].Value));
+                this.mostrar();
+            }
+            else
+            {
+                this.mostrar();
+            }
+            
+        }
     }
 }

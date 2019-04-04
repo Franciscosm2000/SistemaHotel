@@ -193,5 +193,35 @@ namespace SistemaHotel.Model
             return rpta;
         }
 
+        public DataTable EliminarHabReserva(int idhabreserva)
+        {
+            DataTable DtResultado = new DataTable("Habitacion Reserva");
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon.ConnectionString = ConexionBD.DATABASE_URL;
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "eliminar_un_id_de_ha_reserva";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter habreserva = new SqlParameter();
+                habreserva.ParameterName = "@id_hab_reserva";
+                habreserva.SqlDbType = SqlDbType.Int;
+                //nombrecliente.Size = 20;
+                habreserva.Value = idhabreserva;
+                SqlCmd.Parameters.Add(habreserva);
+
+                SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
+                SqlDat.Fill(DtResultado);
+
+            }
+            catch (Exception ex)
+            {
+                DtResultado = null;
+            }
+            return DtResultado;
+
+        }
     }
 }

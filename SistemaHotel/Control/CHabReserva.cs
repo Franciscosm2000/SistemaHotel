@@ -46,6 +46,10 @@ namespace SistemaHotel.Control
             obj.Insertar(obj);
         }
 
-
+        public static DataTable eliminar_hab_reserva(int id_hab_reserva)
+        {
+            MHabReserva entrada = new MHabReserva();
+            return entrada.EliminarHabReserva(id_hab_reserva);
+        }
     }
 }

@@ -245,17 +245,19 @@
             // datos_reserva
             // 
             this.datos_reserva.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datos_reserva.Location = new System.Drawing.Point(23, 333);
+            this.datos_reserva.Location = new System.Drawing.Point(23, 318);
             this.datos_reserva.Name = "datos_reserva";
-            this.datos_reserva.Size = new System.Drawing.Size(558, 390);
+            this.datos_reserva.Size = new System.Drawing.Size(558, 370);
             this.datos_reserva.TabIndex = 1;
+            this.datos_reserva.DoubleClick += new System.EventHandler(this.datos_reserva_DoubleClick);
             // 
             // busqueda_txt
             // 
-            this.busqueda_txt.Location = new System.Drawing.Point(26, 90);
+            this.busqueda_txt.Location = new System.Drawing.Point(13, 168);
             this.busqueda_txt.Name = "busqueda_txt";
-            this.busqueda_txt.Size = new System.Drawing.Size(135, 29);
+            this.busqueda_txt.Size = new System.Drawing.Size(162, 29);
             this.busqueda_txt.TabIndex = 27;
+            this.busqueda_txt.TextChanged += new System.EventHandler(this.busqueda_txt_TextChanged);
             // 
             // boton_buscar
             // 
@@ -268,18 +270,21 @@
             this.boton_buscar.Text = "BUSCAR";
             this.boton_buscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.boton_buscar.UseVisualStyleBackColor = true;
+            this.boton_buscar.Click += new System.EventHandler(this.boton_buscar_Click);
             // 
             // boton_editar
             // 
             this.boton_editar.Image = ((System.Drawing.Image)(resources.GetObject("boton_editar.Image")));
             this.boton_editar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.boton_editar.Location = new System.Drawing.Point(13, 136);
+            this.boton_editar.Location = new System.Drawing.Point(13, 90);
             this.boton_editar.Name = "boton_editar";
             this.boton_editar.Size = new System.Drawing.Size(162, 57);
             this.boton_editar.TabIndex = 25;
             this.boton_editar.Text = "EDITAR";
             this.boton_editar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.boton_editar.UseVisualStyleBackColor = true;
+            this.boton_editar.TextChanged += new System.EventHandler(this.verificacion_2);
+            this.boton_editar.Click += new System.EventHandler(this.boton_editar_Click);
             // 
             // boton_agregar
             // 
@@ -301,9 +306,9 @@
             this.panel1.Controls.Add(this.boton_editar);
             this.panel1.Controls.Add(this.boton_buscar);
             this.panel1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(587, 333);
+            this.panel1.Location = new System.Drawing.Point(587, 318);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(190, 390);
+            this.panel1.Size = new System.Drawing.Size(190, 370);
             this.panel1.TabIndex = 28;
             // 
             // label7
@@ -337,12 +342,13 @@
             this.boton_eliminar.Text = "ELIMINAR";
             this.boton_eliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.boton_eliminar.UseVisualStyleBackColor = true;
+            this.boton_eliminar.Click += new System.EventHandler(this.boton_eliminar_Click);
             // 
             // Reserva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 741);
+            this.ClientSize = new System.Drawing.Size(834, 701);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.panel1);
