@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbxdatos = new System.Windows.Forms.GroupBox();
             this.btnGuardarNuevoscambios = new System.Windows.Forms.Button();
             this.btnguardar = new System.Windows.Forms.Button();
@@ -49,6 +49,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lblPa = new System.Windows.Forms.Label();
             this.txbSapellido = new System.Windows.Forms.TextBox();
+            this.btnBuscarRegistro = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.gbxlistacliente = new System.Windows.Forms.GroupBox();
             this.pnl1 = new System.Windows.Forms.Panel();
@@ -57,7 +58,6 @@
             this.btnbuscar = new System.Windows.Forms.Button();
             this.btnactualizarestado = new System.Windows.Forms.Button();
             this.mainGV = new System.Windows.Forms.DataGridView();
-            this.btnBuscarRegistro = new System.Windows.Forms.Button();
             this.gbxdatos.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -150,6 +150,7 @@
             this.txbTel.Name = "txbTel";
             this.txbTel.Size = new System.Drawing.Size(240, 22);
             this.txbTel.TabIndex = 12;
+            this.txbTel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbTel_KeyPress);
             // 
             // lblTel
             // 
@@ -191,7 +192,7 @@
             this.txbSnombre.Name = "txbSnombre";
             this.txbSnombre.Size = new System.Drawing.Size(240, 22);
             this.txbSnombre.TabIndex = 4;
-            this.txbSnombre.Click += new System.EventHandler(this.Sn);
+            this.txbSnombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbSnombre_KeyPress);
             // 
             // lblPn
             // 
@@ -208,7 +209,7 @@
             this.txbPnombre.Name = "txbPnombre";
             this.txbPnombre.Size = new System.Drawing.Size(240, 22);
             this.txbPnombre.TabIndex = 1;
-            this.txbPnombre.Click += new System.EventHandler(this.Pn);
+            this.txbPnombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbPnombre_KeyPress);
             // 
             // lblSn
             // 
@@ -234,7 +235,7 @@
             this.txbPapellido.Name = "txbPapellido";
             this.txbPapellido.Size = new System.Drawing.Size(240, 22);
             this.txbPapellido.TabIndex = 2;
-            this.txbPapellido.Click += new System.EventHandler(this.Pa);
+            this.txbPapellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbPapellido_KeyPress);
             // 
             // txbCorreo
             // 
@@ -266,7 +267,20 @@
             this.txbSapellido.Name = "txbSapellido";
             this.txbSapellido.Size = new System.Drawing.Size(240, 22);
             this.txbSapellido.TabIndex = 8;
-            this.txbSapellido.Click += new System.EventHandler(this.Sa);
+            this.txbSapellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbSapellido_KeyPress);
+            // 
+            // btnBuscarRegistro
+            // 
+            this.btnBuscarRegistro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.btnBuscarRegistro.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnBuscarRegistro.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnBuscarRegistro.Location = new System.Drawing.Point(120, 164);
+            this.btnBuscarRegistro.Name = "btnBuscarRegistro";
+            this.btnBuscarRegistro.Size = new System.Drawing.Size(102, 23);
+            this.btnBuscarRegistro.TabIndex = 3;
+            this.btnBuscarRegistro.Text = "Buscar";
+            this.btnBuscarRegistro.UseVisualStyleBackColor = false;
+            this.btnBuscarRegistro.Click += new System.EventHandler(this.btnBuscarRegistro_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -365,41 +379,28 @@
             this.mainGV.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
             this.mainGV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.mainGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Century", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.mainGV.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.mainGV.DefaultCellStyle = dataGridViewCellStyle3;
             this.mainGV.EnableHeadersVisualStyles = false;
             this.mainGV.GridColor = System.Drawing.Color.SteelBlue;
             this.mainGV.Location = new System.Drawing.Point(6, 47);
             this.mainGV.Name = "mainGV";
             this.mainGV.ReadOnly = true;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.White;
-            this.mainGV.RowsDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.mainGV.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.mainGV.Size = new System.Drawing.Size(592, 179);
             this.mainGV.TabIndex = 0;
             this.mainGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mainGV_CellClick);
             this.mainGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mainGV_CellContentClick);
-            // 
-            // btnBuscarRegistro
-            // 
-            this.btnBuscarRegistro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.btnBuscarRegistro.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnBuscarRegistro.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnBuscarRegistro.Location = new System.Drawing.Point(120, 164);
-            this.btnBuscarRegistro.Name = "btnBuscarRegistro";
-            this.btnBuscarRegistro.Size = new System.Drawing.Size(102, 23);
-            this.btnBuscarRegistro.TabIndex = 3;
-            this.btnBuscarRegistro.Text = "Buscar";
-            this.btnBuscarRegistro.UseVisualStyleBackColor = false;
-            this.btnBuscarRegistro.Click += new System.EventHandler(this.btnBuscarRegistro_Click);
             // 
             // clienteDlg
             // 

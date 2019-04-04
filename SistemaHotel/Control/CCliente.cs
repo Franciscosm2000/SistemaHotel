@@ -22,7 +22,7 @@ namespace SistemaHotel.Control
             return cliente.show();
         }
         //Metodo que envia los datos a editar cilente hasta Mcliente
-        public void EditarCliente(int id ,String p_n, String s_n, String p_a, String s_a, String tel, String direccion, String correo)
+        public void EditarCliente(int id ,String p_n, String s_n, String p_a, String s_a, String direccion, String tel, String correo)
         {
             MCliente cliente = new MCliente(id,p_n, s_n, p_a, s_a, tel, direccion, correo);
             cliente.EditarCLiente(cliente);

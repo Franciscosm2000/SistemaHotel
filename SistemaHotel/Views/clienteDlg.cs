@@ -22,19 +22,23 @@ namespace SistemaHotel.Views
         //Evento Guardar
         private void btnguardar_Click(object sender, EventArgs e)
         {
-            CCliente cliente = new CCliente();
-            try
+            if (validarcampos() == true)
             {
-                cliente.AgregarCliente(txbPnombre.Text, txbSnombre.Text, txbPapellido.Text, txbSapellido.Text,
-                txbTel.Text, txbDireccion.Text, txbCorreo.Text);
-                clearCampos();
+                CCliente cliente = new CCliente();
+                try
+                {
+                    cliente.AgregarCliente(txbPnombre.Text, txbSnombre.Text, txbPapellido.Text, txbSapellido.Text,
+                    txbTel.Text, txbDireccion.Text, txbCorreo.Text);
+                    clearCampos();
+                }
+                catch (Exception ex)
+                {
+                    msgerror(ex.Message);
+                }
+                MessageBox.Show("Agregado Correctamente...");
+                refresh();
             }
-            catch (Exception ex)
-            {
-                msgerror(ex.Message);
-            }    
-            MessageBox.Show("Agregado Correctamente...");
-            refresh();
+            
         }
         //Evento para cuando  inicie el formulario mostrar datos guardados
         private void clienteDlg_Load(object sender, EventArgs e)
@@ -72,11 +76,6 @@ namespace SistemaHotel.Views
             btnGuardarNuevoscambios.Visible = true;
             btnguardar.Visible = false;
             mainGV.CellClick += mainGV_CellClick; //Activamos Metodo
-            //Desactivamos Metodos
-            txbPnombre.Click -= Pn;
-            txbSnombre.Click -= Sn;
-            txbPapellido.Click -= Pa;
-            txbSapellido.Click -= Sa;
         }
         //metodo que captura el elemento selecciando de la tabla
         private void mainGV_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -97,17 +96,20 @@ namespace SistemaHotel.Views
         //Metodo que guarda los nuevos cambios 
         private void btnGuardarNuevoscambios_Click(object sender, EventArgs e)
         {
-            CCliente cliente = new CCliente();
-            try
+            if (validarcampos() == true)
             {
-                cliente.EditarCliente(id,txbPnombre.Text,txbSnombre.Text,txbPapellido.Text,txbSapellido.Text,txbDireccion.Text,txbTel.Text,txbCorreo.Text);
-                refresh();
-                MessageBox.Show("Editado Correctamente...");
-            }
-            catch (Exception es)
-            {
+                CCliente cliente = new CCliente();
+                try
+                {
+                    cliente.EditarCliente(id, txbPnombre.Text, txbSnombre.Text, txbPapellido.Text, txbSapellido.Text, txbDireccion.Text, txbTel.Text, txbCorreo.Text);
+                    refresh();
+                    MessageBox.Show("Editado Correctamente...");
+                }
+                catch (Exception es)
+                {
 
-                msgerror(es.Message);
+                    msgerror(es.Message);
+                }
             }
         }
         //metodo que permite agregar un nuevo registro
@@ -126,10 +128,6 @@ namespace SistemaHotel.Views
             this.btnBuscarRegistro.Visible = false;
             this.btnGuardarNuevoscambios.Visible = false;
             mainGV.CellClick -= mainGV_CellClick;
-            txbPnombre.Click -= Pn;
-            txbSnombre.Click -= Sn;
-            txbPapellido.Click -= Pa;
-            txbSapellido.Click -= Sa;
         }
         //metodo que limpia campos
         private void clearCampos()
@@ -187,20 +185,23 @@ namespace SistemaHotel.Views
         private void DesabilitarEnBusqueda()
         {
             gbxdatos.Enabled = true;
+            lblPn.Text = "Registro :";
+            lblSn.Visible = false;
+            lblPa.Visible = false;
+            lblSa.Visible = false;
             lblCorreo.Visible = false;
             lblTel.Visible = false;
             lblDireccion.Visible = false;
             txbCorreo.Visible = false;
             txbTel.Visible = false;
             txbDireccion.Visible = false;
+            txbSnombre.Visible = false;
+            txbPapellido.Visible = false;
+            txbSapellido.Visible = false;
             btnGuardarNuevoscambios.Visible = false;
             btnguardar.Visible = false;
             btnBuscarRegistro.Visible = true;
             btnAgregar.Enabled = true;
-            txbPnombre.Click += Pn;
-            txbSnombre.Click += Sn;
-            txbPapellido.Click += Pa;
-            txbSapellido.Click += Sa;
             btnactualizarestado.Enabled = false;
         }
         private void Habilitar()
@@ -210,11 +211,18 @@ namespace SistemaHotel.Views
             lblDireccion.Visible = true;
             txbCorreo.Visible = true;
             txbTel.Visible = true;
+            lblPn.Text = "Primer Nombre :";
+            lblSn.Visible = true;
+            lblPa.Visible = true;
+            lblSa.Visible = true;
             txbDireccion.Visible = true;
-            txbPnombre.Enabled = true;
-            txbSnombre.Enabled = true;
-            txbPapellido.Enabled = true;
-            txbSapellido.Enabled = true;
+            txbPnombre.Visible = true;
+            txbSnombre.Visible = true;
+            txbPapellido.Visible = true;
+            txbSapellido.Visible = true;
+            txbSnombre.Visible = true;
+            txbPapellido.Visible = true;
+            txbSapellido.Visible = true;
             btnGuardarNuevoscambios.Visible = true;
             btnguardar.Visible = true;
             btnactualizarestado.Enabled = true;
@@ -222,65 +230,186 @@ namespace SistemaHotel.Views
             mainGV.CellContentClick += mainGV_CellContentClick;
         }
 
-        private void Pn(object sender, EventArgs e)
-        {
-            txbSnombre.Enabled = false;
-            txbPapellido.Enabled = false;
-            txbSapellido.Enabled = false;
-        }
-
-        private void Sn(object sender, EventArgs e)
-        {
-            txbPnombre.Enabled = false;
-            txbPapellido.Enabled = false;
-            txbSapellido.Enabled = false;
-        }
-
-        private void Pa(object sender, EventArgs e)
-        {
-
-            txbPnombre.Enabled = false;
-            txbSnombre.Enabled = false;
-            txbSapellido.Enabled = false;
-        }
-
-        private void Sa(object sender, EventArgs e)
-        {
-            txbPnombre.Enabled = false;
-            txbSnombre.Enabled = false;
-            txbPapellido.Enabled = false;
-        }
-
         private void btnBuscarRegistro_Click(object sender, EventArgs e)
         {
             try
             {
-                if (txbPnombre.Enabled == true)
-                {
-                    mainGV.DataSource = CCliente.showBusqueda(txbPnombre.Text);
-                    mainGV.CellContentClick -= mainGV_CellContentClick;
-                }
-                else if (txbSnombre.Enabled == true)
-                {
-                    mainGV.DataSource = CCliente.showBusqueda(txbSnombre.Text);
-                    mainGV.CellContentClick -= mainGV_CellContentClick;
-                }
-                else if (txbPapellido.Enabled == true)
-                {
-                    mainGV.DataSource = CCliente.showBusqueda(txbPapellido.Text);
-                    mainGV.CellContentClick -= mainGV_CellContentClick;
-                }
-                else if (txbSapellido.Enabled == true)
-                {
-                    mainGV.DataSource = CCliente.showBusqueda(txbSapellido.Text);
-                    mainGV.CellContentClick -= mainGV_CellContentClick;
-                }
+               mainGV.DataSource = CCliente.showBusqueda(txbPnombre.Text); 
             }
             catch (Exception ex)
             {
 
                 msgerror(ex.Message);
             }
+        }
+        //Metodo para validar que los campos no esten vacios
+        private bool validarcampos()
+        {
+            bool rpt = false;
+            int cont = 0;
+
+            if (txbPnombre.Text.Equals("") || txbPnombre.Text == null)
+            {
+                MessageBox.Show(" Obligatorio llenar los campos ... ");
+                cont = 0;
+            }
+            else
+            {
+                cont = cont + 1;
+                if (txbSnombre.Text.Equals("") || txbSnombre.Text == null)
+                {
+                    MessageBox.Show(" Obligatorio llenar los campos ... ");
+                    cont = 0;
+                }
+                else
+                {
+                    cont = cont + 1;
+                    if (txbPapellido.Text.Equals("") || txbPapellido.Text == null)
+                    {
+                        MessageBox.Show(" Obligatorio llenar los campos ... ");
+                        cont = 0;
+                    }
+                    else
+                    {
+                        cont = cont + 1;
+
+                        if (txbSapellido.Text.Equals("") || txbSapellido.Text == null)
+                        {
+                            MessageBox.Show(" Obligatorio llenar los campos ... ");
+                            cont = 0;
+                        }
+                        else
+                        {
+                            cont = cont + 1;
+
+                            if (txbDireccion.Text.Equals("") || txbDireccion.Text == null)
+                            {
+                                MessageBox.Show(" Obligatorio llenar los campos ... ");
+                                cont = 0;
+                            }
+                            else
+                            {
+                                cont = cont + 1;
+
+                                if (txbTel.Text.Equals("") || txbTel.Text == null || txbTel.Text.Length > 8 || txbTel.Text.Length <8)
+                                {
+                                    MessageBox.Show(" El nùmero de telèfono es incorrecto, ... ");
+                                    cont = 0;
+                                }
+                                else
+                                {
+                                    cont = cont + 1;
+
+                                    if (txbCorreo.Text.Equals("") || txbCorreo.Text == null)
+                                    {
+                                        MessageBox.Show(" Obligatorio llenar los campos ... ");
+                                        cont = 0;
+                                    }
+                                    else
+                                    {
+                                        cont = cont + 1;
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+            } // termina el primer else
+
+            if (cont == 7)
+            {
+                rpt = true;
+
+            }
+            else
+            {
+                rpt = false;
+            }
+           return rpt;
+        }
+        //metodo validar solo letras
+        private void solo_letras(KeyPressEventArgs e)
+        {
+            try
+            {
+                if (char.IsLetter(e.KeyChar))
+                {
+                    e.Handled = false;
+                }
+                else
+                    if (char.IsControl(e.KeyChar))
+                {
+                    e.Handled = false;
+                }
+                else
+                    if (char.IsSeparator(e.KeyChar))
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                msgerror(ex.Message);
+            }
+        }
+        //metodo validar solo numeros
+        private void solo_numeros(KeyPressEventArgs e)
+        {
+            try
+            {
+                if (char.IsNumber(e.KeyChar))
+                {
+                    e.Handled = false;
+                }
+                else
+                    if (char.IsControl(e.KeyChar))
+                {
+                    e.Handled = false;
+                }
+                else
+                    if (char.IsSeparator(e.KeyChar))
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                msgerror(ex.Message);
+            }
+        }
+
+        private void txbPnombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            solo_letras(e);
+        }
+
+        private void txbSnombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            solo_letras(e);
+        }
+
+        private void txbPapellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            solo_letras(e);
+        }
+
+        private void txbSapellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            solo_letras(e);
+        }
+
+        private void txbTel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            solo_numeros(e);
         }
     }
 }
