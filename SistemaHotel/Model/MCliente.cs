@@ -41,6 +41,18 @@ namespace SistemaHotel.Model
             this.correo = correo;
         }
 
+        public MCliente(int id_cliente , string p_Nombre, string s_Nombre, string p_Apellido, string s_Apellido, string tel, string direccion, string correo)
+        {
+            this.id_cliente = id_cliente;
+            this.p_Nombre = p_Nombre;
+            this.s_Nombre = s_Nombre;
+            this.p_Apellido = p_Apellido;
+            this.s_Apellido = s_Apellido;
+            this.tel = tel;
+            this.direccion = direccion;
+            this.correo = correo;
+        }
+
         public int Id_cliente { get => id_cliente; set => id_cliente = value; }
         public string P_Nombre { get => p_Nombre; set => p_Nombre = value; }
         public string S_Nombre { get => s_Nombre; set => s_Nombre = value; }
@@ -84,6 +96,8 @@ namespace SistemaHotel.Model
                 throw new Exception("Error en la conexion\n"+ex.Message);
             }
         }
+
+        //Metodo de vista del cliente 
         public DataTable show()
         {
             DataTable res = new DataTable();
@@ -108,6 +122,94 @@ namespace SistemaHotel.Model
                 //if(conn.State=)
                     conn.Close();
             }
+            return res;
+        }
+
+        //Metodo Editar Cliente
+        public void EditarCLiente(MCliente datos)
+        {
+            SqlConnection conn = new SqlConnection();
+
+            try
+            {
+                conn.ConnectionString = ConexionBD.DATABASE_URL;
+                conn.Open();
+                SqlCommand comando = new SqlCommand();
+                comando.Connection = conn;
+                comando.CommandText = "Actualizar_Cliente";
+                comando.CommandType = CommandType.StoredProcedure;
+
+                comando.Parameters.AddWithValue("@id_cl",datos.Id_cliente);
+                comando.Parameters.AddWithValue("@p_nom", datos.P_Nombre);
+                comando.Parameters.AddWithValue("@s_nom", datos.S_Nombre);
+                comando.Parameters.AddWithValue("@p_apell", datos.P_Apellido);
+                comando.Parameters.AddWithValue("@s_apell", datos.S_Apellido);
+                comando.Parameters.AddWithValue("@dir", datos.Direccion);
+                comando.Parameters.AddWithValue("@tel", datos.Tel);
+                comando.Parameters.AddWithValue("@corr", datos.Correo);
+                comando.ExecuteNonQuery();
+
+                comando.Parameters.Clear();
+
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception ("Error en la conexion\n"+e.Message) ;
+            }
+        }
+
+        //Metodo Cambiar Estado
+        public void CambiarEstado(int id)
+        {
+            SqlConnection conn = new SqlConnection();
+            try
+            {
+                conn.ConnectionString = ConexionBD.DATABASE_URL;
+                conn.Open();
+                SqlCommand comando = new SqlCommand();
+                comando.Connection = conn;
+                comando.CommandText = "Cambiar_Estado";
+                comando.CommandType = CommandType.StoredProcedure;
+
+                comando.Parameters.AddWithValue ("@id_cl",id);
+                comando.ExecuteNonQuery();
+                comando.Parameters.Clear();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception ("Error en la conexion\n" + ex.Message);
+            }
+        }
+        //Metdo Busquda
+        public DataTable showBusqueda(String bus)
+        {
+            SqlConnection conn = new SqlConnection();
+            DataTable res = new DataTable();
+
+            try
+            {
+                conn.ConnectionString = ConexionBD.DATABASE_URL;
+                conn.Open();
+                SqlCommand comando = new SqlCommand();
+                comando.Connection = conn;
+                comando.CommandText = "Buscar_Regs";
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@dato",bus);
+                comando.ExecuteNonQuery();
+                SqlDataAdapter d = new SqlDataAdapter(comando);
+                d.Fill(res);
+                comando.Parameters.Clear();
+
+                
+            }
+            catch (Exception)
+            {
+
+                throw new Exception ("Error de conexion") ;
+            }
+
             return res;
         }
 
