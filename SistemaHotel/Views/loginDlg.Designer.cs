@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(loginDlg));
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -39,6 +40,8 @@
             // 
             // panel1
             // 
+            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
@@ -47,7 +50,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(527, 223);
+            this.panel1.Size = new System.Drawing.Size(591, 230);
             this.panel1.TabIndex = 0;
             // 
             // button1
@@ -65,7 +68,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(73, 103);
+            this.label2.Location = new System.Drawing.Point(128, 99);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 17);
             this.label2.TabIndex = 3;
@@ -75,7 +78,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(73, 46);
+            this.label1.Location = new System.Drawing.Point(132, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 17);
             this.label1.TabIndex = 2;
@@ -83,7 +86,7 @@
             // 
             // pswdTxt
             // 
-            this.pswdTxt.Location = new System.Drawing.Point(192, 100);
+            this.pswdTxt.Location = new System.Drawing.Point(208, 96);
             this.pswdTxt.Name = "pswdTxt";
             this.pswdTxt.PasswordChar = '*';
             this.pswdTxt.Size = new System.Drawing.Size(235, 20);
@@ -92,7 +95,7 @@
             // 
             // usrnameTxt
             // 
-            this.usrnameTxt.Location = new System.Drawing.Point(192, 43);
+            this.usrnameTxt.Location = new System.Drawing.Point(208, 39);
             this.usrnameTxt.Name = "usrnameTxt";
             this.usrnameTxt.Size = new System.Drawing.Size(235, 20);
             this.usrnameTxt.TabIndex = 0;
@@ -101,7 +104,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(527, 223);
+            this.ClientSize = new System.Drawing.Size(591, 230);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "loginDlg";
