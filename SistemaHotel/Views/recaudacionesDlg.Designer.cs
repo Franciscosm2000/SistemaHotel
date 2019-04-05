@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.bonif_emplBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.mydtpicker = new System.Windows.Forms.DateTimePicker();
             this.recservBtn = new System.Windows.Forms.Button();
             this.recxhabBtn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.mainGV = new System.Windows.Forms.DataGridView();
-            this.bonif_emplBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainGV)).BeginInit();
@@ -54,6 +54,16 @@
             this.panel1.Size = new System.Drawing.Size(800, 100);
             this.panel1.TabIndex = 0;
             // 
+            // bonif_emplBtn
+            // 
+            this.bonif_emplBtn.Location = new System.Drawing.Point(115, 70);
+            this.bonif_emplBtn.Name = "bonif_emplBtn";
+            this.bonif_emplBtn.Size = new System.Drawing.Size(199, 23);
+            this.bonif_emplBtn.TabIndex = 3;
+            this.bonif_emplBtn.Text = "Ver Bonificaciones a Empleados";
+            this.bonif_emplBtn.UseVisualStyleBackColor = true;
+            this.bonif_emplBtn.Click += new System.EventHandler(this.button1_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -66,7 +76,7 @@
             // 
             // mydtpicker
             // 
-            this.mydtpicker.CustomFormat = "MM-yyyy";
+            this.mydtpicker.CustomFormat = "mmmm yyyy";
             this.mydtpicker.Location = new System.Drawing.Point(518, 40);
             this.mydtpicker.Name = "mydtpicker";
             this.mydtpicker.Size = new System.Drawing.Size(200, 20);
@@ -110,16 +120,6 @@
             this.mainGV.Size = new System.Drawing.Size(800, 350);
             this.mainGV.TabIndex = 0;
             // 
-            // bonif_emplBtn
-            // 
-            this.bonif_emplBtn.Location = new System.Drawing.Point(115, 70);
-            this.bonif_emplBtn.Name = "bonif_emplBtn";
-            this.bonif_emplBtn.Size = new System.Drawing.Size(199, 23);
-            this.bonif_emplBtn.TabIndex = 3;
-            this.bonif_emplBtn.Text = "Ver Bonificaciones a Empleados";
-            this.bonif_emplBtn.UseVisualStyleBackColor = true;
-            this.bonif_emplBtn.Click += new System.EventHandler(this.button1_Click);
-            // 
             // recaudacionesDlg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -129,6 +129,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "recaudacionesDlg";
             this.Text = "recaudacionesDlg";
+            this.Load += new System.EventHandler(this.recaudacionesDlg_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

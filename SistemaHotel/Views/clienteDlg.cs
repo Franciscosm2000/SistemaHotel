@@ -51,6 +51,7 @@ namespace SistemaHotel.Views
             try
             {
                 mainGV.DataSource = CCliente.show();
+                mainGV.Columns["Id_Cliente"].Visible = false;
             }
             catch (Exception ex)
             {

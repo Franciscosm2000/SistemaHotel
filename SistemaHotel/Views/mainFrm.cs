@@ -20,7 +20,7 @@ namespace SistemaHotel.Views
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             clienteDlg dlg = new clienteDlg();
-            dlg.Show();
+            dlg.ShowDialog();
             
         }
 
@@ -32,13 +32,13 @@ namespace SistemaHotel.Views
         private void disponibilidadDeHabitacionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             habitacionesDlg dlg = new habitacionesDlg();
-            dlg.Show();
+            dlg.ShowDialog();
         }
 
         private void reservaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Reserva dlg = new Reserva();
-            dlg.Show();
+            dlg.ShowDialog();
         }
 
         private void pnlControlUsuario_Paint(object sender, PaintEventArgs e)
@@ -48,7 +48,7 @@ namespace SistemaHotel.Views
         private void porHabitaciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
             recaudacionesDlg dlg = new recaudacionesDlg();
-            dlg.Show();
+            dlg.ShowDialog();
         }
 
         private void reservarHabitaciónToolStripMenuItem_Click(object sender, EventArgs e)

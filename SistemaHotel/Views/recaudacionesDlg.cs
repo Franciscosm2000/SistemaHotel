@@ -86,5 +86,11 @@ namespace SistemaHotel.Views
                 MsgError(ex.Message);
             }
         }
+
+        private void recaudacionesDlg_Load(object sender, EventArgs e)
+        {
+            mydtpicker.Format = DateTimePickerFormat.Custom;
+            mydtpicker.CustomFormat = "MMMM, yyyy";
+        }
     }
 }
