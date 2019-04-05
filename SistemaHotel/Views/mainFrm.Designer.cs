@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainFrm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.catálogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,7 +38,7 @@
             this.reservarHabitaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.recaudacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.porHabitaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bonificacionAEmpleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,14 +66,14 @@
             // clienteToolStripMenuItem
             // 
             this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.clienteToolStripMenuItem.Text = "Cliente";
             this.clienteToolStripMenuItem.Click += new System.EventHandler(this.clienteToolStripMenuItem_Click);
             // 
             // reservaToolStripMenuItem
             // 
             this.reservaToolStripMenuItem.Name = "reservaToolStripMenuItem";
-            this.reservaToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.reservaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.reservaToolStripMenuItem.Text = "Reserva";
             this.reservaToolStripMenuItem.Click += new System.EventHandler(this.reservaToolStripMenuItem_Click);
             // 
@@ -102,8 +103,7 @@
             // recaudacionesToolStripMenuItem
             // 
             this.recaudacionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.porHabitaciónToolStripMenuItem,
-            this.bonificacionAEmpleadosToolStripMenuItem});
+            this.porHabitaciónToolStripMenuItem});
             this.recaudacionesToolStripMenuItem.Name = "recaudacionesToolStripMenuItem";
             this.recaudacionesToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
             this.recaudacionesToolStripMenuItem.Text = "Recaudaciones";
@@ -111,15 +111,18 @@
             // porHabitaciónToolStripMenuItem
             // 
             this.porHabitaciónToolStripMenuItem.Name = "porHabitaciónToolStripMenuItem";
-            this.porHabitaciónToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.porHabitaciónToolStripMenuItem.Text = "Ver Recaudaciones";
+            this.porHabitaciónToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.porHabitaciónToolStripMenuItem.Text = " Recaudaciones y Bonificaciones";
             this.porHabitaciónToolStripMenuItem.Click += new System.EventHandler(this.porHabitaciónToolStripMenuItem_Click);
             // 
-            // bonificacionAEmpleadosToolStripMenuItem
+            // panel1
             // 
-            this.bonificacionAEmpleadosToolStripMenuItem.Name = "bonificacionAEmpleadosToolStripMenuItem";
-            this.bonificacionAEmpleadosToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.bonificacionAEmpleadosToolStripMenuItem.Text = "Bonificacion a empleados";
+            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 24);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(938, 514);
+            this.panel1.TabIndex = 2;
             // 
             // mainFrm
             // 
@@ -127,11 +130,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(938, 538);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "mainFrm";
-            this.Text = "SistemaHotel";
+            this.Text = "Sistema Hotel";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.mainFrm_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -152,6 +157,6 @@
         private System.Windows.Forms.ToolStripMenuItem reservarHabitaciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem recaudacionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem porHabitaciónToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bonificacionAEmpleadosToolStripMenuItem;
+        private System.Windows.Forms.Panel panel1;
     }
 }

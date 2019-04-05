@@ -212,5 +212,10 @@ namespace SistemaHotel.Views
             }
             
         }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
