@@ -26,7 +26,11 @@ namespace SistemaHotel.Views
 
         private void mainFrm_Load(object sender, EventArgs e)
         {
-            this.IsMdiContainer = true;
+            loginDlg log = new loginDlg();
+            if (log.ShowDialog() == DialogResult.Cancel)
+            {
+                this.Close();
+            }
         }
 
         private void disponibilidadDeHabitacionesToolStripMenuItem_Click(object sender, EventArgs e)

@@ -296,7 +296,7 @@
             this.Controls.Add(this.panel_de_control);
             this.Controls.Add(this.groupBox1);
             this.Name = "HabitacionReserva";
-            this.Text = "HabitacionReserva";
+            this.Text = "Reservar Habitación";
             this.Load += new System.EventHandler(this.HabitacionReserva_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

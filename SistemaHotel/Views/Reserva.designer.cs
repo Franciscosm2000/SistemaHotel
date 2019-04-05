@@ -51,9 +51,9 @@
             this.boton_editar = new System.Windows.Forms.Button();
             this.boton_agregar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.boton_eliminar = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.boton_eliminar = new System.Windows.Forms.Button();
             this.grupo_reserva.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datos_empleados)).BeginInit();
@@ -311,6 +311,19 @@
             this.panel1.Size = new System.Drawing.Size(190, 370);
             this.panel1.TabIndex = 28;
             // 
+            // boton_eliminar
+            // 
+            this.boton_eliminar.Image = ((System.Drawing.Image)(resources.GetObject("boton_eliminar.Image")));
+            this.boton_eliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.boton_eliminar.Location = new System.Drawing.Point(13, 296);
+            this.boton_eliminar.Name = "boton_eliminar";
+            this.boton_eliminar.Size = new System.Drawing.Size(162, 57);
+            this.boton_eliminar.TabIndex = 28;
+            this.boton_eliminar.Text = "ELIMINAR";
+            this.boton_eliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.boton_eliminar.UseVisualStyleBackColor = true;
+            this.boton_eliminar.Click += new System.EventHandler(this.boton_eliminar_Click);
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -331,19 +344,6 @@
             this.label8.TabIndex = 30;
             this.label8.Text = "EMPLEADOS";
             // 
-            // boton_eliminar
-            // 
-            this.boton_eliminar.Image = ((System.Drawing.Image)(resources.GetObject("boton_eliminar.Image")));
-            this.boton_eliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.boton_eliminar.Location = new System.Drawing.Point(13, 296);
-            this.boton_eliminar.Name = "boton_eliminar";
-            this.boton_eliminar.Size = new System.Drawing.Size(162, 57);
-            this.boton_eliminar.TabIndex = 28;
-            this.boton_eliminar.Text = "ELIMINAR";
-            this.boton_eliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.boton_eliminar.UseVisualStyleBackColor = true;
-            this.boton_eliminar.Click += new System.EventHandler(this.boton_eliminar_Click);
-            // 
             // Reserva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -356,6 +356,7 @@
             this.Controls.Add(this.datos_clientes);
             this.Controls.Add(this.datos_reserva);
             this.Controls.Add(this.grupo_reserva);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Reserva";
             this.Text = "Reserva";
             this.Load += new System.EventHandler(this.Reserva_Load);
