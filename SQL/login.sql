@@ -8,17 +8,6 @@ CREATE TABLE sysuser(
 	rol VARCHAR(30)
 );
 
-CREATE PROCEDURE log_in
-@usrname Varchar(25), @pswd Varchar(100)
-As
-if exists (select * from sysuser where usrname=@usrname and decryptbypassphrase(@pswd,pswd) = @pswd)
-Begin
-Select 'GRANTED'
-end
-Else
-Begin
-Select 'DENIED'
-End
 
 CREATE PROCEDURE sp_in_sysuser
 @usrname VARCHAR(25), @pswd VARCHAR(100), @rol VARCHAR(30)
