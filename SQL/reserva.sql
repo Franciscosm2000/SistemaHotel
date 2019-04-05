@@ -2,7 +2,7 @@ use hotel
 go
 
 ---muestra el id, nombre y apellido del cliente
-alter procedure clientes
+create procedure clientes
 as
 select 
 c.id_cliente as [ID del cliente],
@@ -14,7 +14,7 @@ from cliente c
 execute clientes
 
 ---muestre el id y el nombre del empleado
-alter procedure Empleados
+create procedure Empleados
 as
 select
 e.id_empleado as [ID del Empleado],
@@ -159,7 +159,7 @@ from tipo_habitacion th;
 
 execute mostrar_tipo_habitacion
 
-alter procedure mostrar_habitaciones
+create procedure mostrar_habitaciones
 as 
 select
 h.no_habitacion as [No Habitación],

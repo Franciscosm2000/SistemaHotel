@@ -44,6 +44,8 @@
             // 
             // panel1
             // 
+            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.bonif_emplBtn);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.mydtpicker);

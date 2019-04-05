@@ -71,7 +71,7 @@ AS
 
 
 
-Alter PROCEDURE Disponibilidad_Habitacion
+create PROCEDURE Disponibilidad_Habitacion
 @no_hab int, @f_in date, @f_out date
 as
 
@@ -152,7 +152,7 @@ AS BEGIN
 		RETURN @stat;
 	END
 exec disponibilidad_hab '20190406', '20190416'
-Alter PROCEDURE disponibilidad_hab @f_in date, @f_out date
+create PROCEDURE disponibilidad_hab @f_in date, @f_out date
 AS
 	SELECT h.no_habitacion as [N° Habitación],
 	th.nom_tipo as Categoría,

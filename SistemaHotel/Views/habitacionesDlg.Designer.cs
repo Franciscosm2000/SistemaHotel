@@ -50,6 +50,7 @@
             // 
             // fieldsPane
             // 
+            this.fieldsPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("fieldsPane.BackgroundImage")));
             this.fieldsPane.Controls.Add(this.f_outDTP);
             this.fieldsPane.Controls.Add(this.f_inDTP);
             this.fieldsPane.Controls.Add(this.nohabSelec);
