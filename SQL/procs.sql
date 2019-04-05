@@ -161,7 +161,7 @@ AS
 	FROM habitacion h INNER JOIN tipo_habitacion th ON
 	th.cod_tipo=h.cod_tipo;
 
-CREATE PROCEDURE rec_mes_año
+CREATE PROCEDURE rec_hab
 @m int, @yr int
 AS
 	--recaudaciones por habitacion
@@ -171,12 +171,18 @@ AS
 	WHERE MONTH(r.fecha_reserva)=@m AND YEAR(r.fecha_reserva)=@yr
 	GROUP BY hr.no_habitacion;
 	--recaudaciones por servicio
+CREATE PROCEDURE rec_serv
+@m int, @yr int
+AS
 	SELECT s.descr as [Nombre servicio], sum(cs.precio) as Recaudacion FROM servicio s
 	INNER JOIN cargos_servicios cs ON cs.id_servicio=s.id_servicio
 	INNER JOIN habitacion_reserva hr ON cs.id_hab_reserva=hr.id_hab_reserva
 	INNER JOIN reserva r ON r.id_reserva=hr.id_reserva
 	WHERE MONTH(r.fecha_reserva)= @m AND YEAR(r.fecha_reserva)=@yr
 	GROUP BY s.descr; 
+CREATE PROCEDURE bonif_empl
+@m int, @yr int
+AS	
 	--comisiones
 	SELECT (em.p_nom+' '+em.p_apell) as [Nombre Empleado],
 	ROUND((sum(hr.precio)*0.15),2) as Comision

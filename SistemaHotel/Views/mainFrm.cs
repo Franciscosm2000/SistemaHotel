@@ -44,5 +44,11 @@ namespace SistemaHotel.Views
         private void pnlControlUsuario_Paint(object sender, PaintEventArgs e)
         {
                     }
+
+        private void porHabitaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            recaudacionesDlg dlg = new recaudacionesDlg();
+            dlg.Show();
+        }
     }
 }
