@@ -17,9 +17,9 @@ namespace SistemaHotel.Views
         {
             InitializeComponent();
             CenterToScreen();
-            Bitmap img = new Bitmap(Application.StartupPath + @"\background\Fondo2.jpg");
+            /*Bitmap img = new Bitmap(Application.StartupPath + @"\background\Fondo2.jpg");
             this.BackgroundImage = img;
-            this.BackgroundImageLayout = ImageLayout.Stretch;
+            this.BackgroundImageLayout = ImageLayout.Stretch;*/
             boton_guardar.Enabled = false;
         }
 
@@ -28,7 +28,7 @@ namespace SistemaHotel.Views
             this.datos_habitacion_reserva.DataSource = CHabReserva.visualizar_habitacion_reserva();
             this.Datos_Habitacion.DataSource = CHabReserva.visualizar_las_habitaciones();
             this.datos_reserva.DataSource = CHabReserva.visualizar_la_reservacion();
-            this.datos_precio_habitacion.DataSource = CHabReserva.visualizar_tipo_habitacion();
+            //this.datos_precio_habitacion.DataSource = CHabReserva.visualizar_tipo_habitacion();
         }
 
         private void HabitacionReserva_Load(object sender, EventArgs e)
@@ -74,6 +74,7 @@ namespace SistemaHotel.Views
         private void Datos_Habitacion_DoubleClick(object sender, EventArgs e)
         {
             No_habitacion.Text = Convert.ToString(this.Datos_Habitacion.CurrentRow.Cells["No Habitación"].Value);
+            Precio_habitacion.Text = Convert.ToString(this.Datos_Habitacion.CurrentRow.Cells["Precio"].Value);
         }
 
         private void datos_reserva_DoubleClick(object sender, EventArgs e)
@@ -81,10 +82,10 @@ namespace SistemaHotel.Views
             Id_reserva.Text = Convert.ToString(this.datos_reserva.CurrentRow.Cells["Id de Reserva"].Value);
         }
 
-        private void datos_precio_habitacion_DoubleClick(object sender, EventArgs e)
+        /*private void datos_precio_habitacion_DoubleClick(object sender, EventArgs e)
         {
             Precio_habitacion.Text = Convert.ToString(this.datos_precio_habitacion.CurrentRow.Cells["Precio"].Value);
-        }
+        }*/
 
         private void verificacion(object sender, EventArgs e)
         {
@@ -115,6 +116,11 @@ namespace SistemaHotel.Views
                 this.mostrar();
             }
             
+        }
+
+        private void Datos_Habitacion_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

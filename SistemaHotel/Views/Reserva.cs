@@ -19,9 +19,9 @@ namespace SistemaHotel.Views
         {
             InitializeComponent();
             CenterToScreen();
-            Bitmap img = new Bitmap(Application.StartupPath + @"\background\fondo1.jpg");
-            this.BackgroundImage = img;
-            this.BackgroundImageLayout = ImageLayout.Stretch;
+            //Bitmap img = new Bitmap(Application.StartupPath + @"\background\fondo1.jpg");
+            //this.BackgroundImage = img;
+            //this.BackgroundImageLayout = ImageLayout.Stretch;
             boton_agregar.Enabled = false;
             
         }
@@ -38,6 +38,10 @@ namespace SistemaHotel.Views
             this.datos_reserva.DataSource = CReserva.visualizar();
             this.datos_clientes.DataSource = CReserva.visualizar_2();
             this.datos_empleados.DataSource = CReserva.visualizar_3();
+            datos_clientes.Columns["ID del cliente"].Visible = false;
+            datos_empleados.Columns["ID del Empleado"].Visible = false;
+            datos_reserva.Columns["ID Cliente"].Visible = false;
+            datos_reserva.Columns["ID Empleado"].Visible = false;
         }
         
         private void Reserva_Load(object sender, EventArgs e)

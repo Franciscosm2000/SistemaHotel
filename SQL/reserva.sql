@@ -2,28 +2,30 @@ use hotel
 go
 
 ---muestra el id, nombre y apellido del cliente
-create procedure clientes
+alter procedure clientes
 as
 select 
 c.id_cliente as [ID del cliente],
 c.p_nom as [Primer Nombre],
-c.p_apell as [Primer Apellido]
+c.p_apell as [Primer Apellido],
+c.direccion as Dirección
 from cliente c
 
 execute clientes
 
 ---muestre el id y el nombre del empleado
-create procedure Empleados
+alter procedure Empleados
 as
 select
 e.id_empleado as [ID del Empleado],
 e.p_nom as [Primer Nombre],
-e.p_apell as [Primer Apellido]
+e.p_apell as [Primer Apellido],
+e.direccion as Dirección
 from empleado e
 
 execute Empleados
 ---muestra todos los datos de la reserva
-alter procedure mostrar_reserva
+create procedure mostrar_reserva
 as
 select
 a.id_reserva as [ID Reserva],
@@ -102,7 +104,7 @@ where id_reserva = @id_reserva
 execute editar_reserva 4,2,3,'2019-02-02','CREDITO','NIO','PAGADO'
 
 ---busqueda de la reserva guardada
-alter procedure buscar_reserva
+create procedure buscar_reserva
 @Nombre_del_cliente varchar(20)
 as
 select
@@ -157,12 +159,13 @@ from tipo_habitacion th;
 
 execute mostrar_tipo_habitacion
 
-create procedure mostrar_habitaciones
+alter procedure mostrar_habitaciones
 as 
 select
 h.no_habitacion as [No Habitación],
-h.stat as [Estado]
-from habitacion h;
+h.stat as [Estado Actual],
+th.precio as Precio
+from habitacion h inner join tipo_habitacion th on th.cod_tipo=h.cod_tipo;
 
 execute mostrar_habitaciones
 
@@ -196,7 +199,7 @@ from habitacion_reserva hr;
 execute insertar_habitacion_reserva 9,12,'2019-04-03','2019-04-04',150
 
 ---eliminar habitacion reserva
-alter procedure eliminar_un_id_de_ha_reserva
+create procedure eliminar_un_id_de_ha_reserva
 @id_hab_reserva int
 as
 delete from habitacion_reserva

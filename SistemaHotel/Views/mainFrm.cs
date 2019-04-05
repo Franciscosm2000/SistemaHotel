@@ -50,5 +50,11 @@ namespace SistemaHotel.Views
             recaudacionesDlg dlg = new recaudacionesDlg();
             dlg.Show();
         }
+
+        private void reservarHabitaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HabitacionReserva resv = new HabitacionReserva();
+            resv.ShowDialog();
+        }
     }
 }

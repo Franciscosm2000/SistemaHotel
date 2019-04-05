@@ -41,28 +41,24 @@
             this.fecha_de_salida = new System.Windows.Forms.DateTimePicker();
             this.Precio_habitacion = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.panel_de_control = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.Datos_Habitacion = new System.Windows.Forms.DataGridView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.datos_reserva = new System.Windows.Forms.DataGridView();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.datos_precio_habitacion = new System.Windows.Forms.DataGridView();
             this.datos_habitacion_reserva = new System.Windows.Forms.DataGridView();
             this.boton_guardar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.boton_eliminar = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.datos_reserva = new System.Windows.Forms.DataGridView();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.Datos_Habitacion = new System.Windows.Forms.DataGridView();
+            this.panel_de_control = new System.Windows.Forms.TabControl();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.panel_de_control.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Datos_Habitacion)).BeginInit();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datos_reserva)).BeginInit();
-            this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datos_precio_habitacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datos_habitacion_reserva)).BeginInit();
             this.panel1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.datos_reserva)).BeginInit();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Datos_Habitacion)).BeginInit();
+            this.panel_de_control.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -191,78 +187,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingresos de Habitacion Reserva";
             // 
-            // panel_de_control
-            // 
-            this.panel_de_control.Controls.Add(this.tabPage1);
-            this.panel_de_control.Controls.Add(this.tabPage2);
-            this.panel_de_control.Controls.Add(this.tabPage3);
-            this.panel_de_control.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel_de_control.Location = new System.Drawing.Point(338, 22);
-            this.panel_de_control.Name = "panel_de_control";
-            this.panel_de_control.SelectedIndex = 0;
-            this.panel_de_control.Size = new System.Drawing.Size(281, 167);
-            this.panel_de_control.TabIndex = 4;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.Datos_Habitacion);
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(273, 139);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Habitacion";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // Datos_Habitacion
-            // 
-            this.Datos_Habitacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Datos_Habitacion.Location = new System.Drawing.Point(6, 5);
-            this.Datos_Habitacion.Name = "Datos_Habitacion";
-            this.Datos_Habitacion.Size = new System.Drawing.Size(260, 120);
-            this.Datos_Habitacion.TabIndex = 3;
-            this.Datos_Habitacion.DoubleClick += new System.EventHandler(this.Datos_Habitacion_DoubleClick);
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.datos_reserva);
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(273, 139);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Reserva";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // datos_reserva
-            // 
-            this.datos_reserva.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datos_reserva.Location = new System.Drawing.Point(6, 5);
-            this.datos_reserva.Name = "datos_reserva";
-            this.datos_reserva.Size = new System.Drawing.Size(260, 120);
-            this.datos_reserva.TabIndex = 3;
-            this.datos_reserva.DoubleClick += new System.EventHandler(this.datos_reserva_DoubleClick);
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.datos_precio_habitacion);
-            this.tabPage3.Location = new System.Drawing.Point(4, 24);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(273, 139);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Precio Habitacion";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // datos_precio_habitacion
-            // 
-            this.datos_precio_habitacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datos_precio_habitacion.Location = new System.Drawing.Point(6, 5);
-            this.datos_precio_habitacion.Name = "datos_precio_habitacion";
-            this.datos_precio_habitacion.Size = new System.Drawing.Size(260, 120);
-            this.datos_precio_habitacion.TabIndex = 3;
-            this.datos_precio_habitacion.DoubleClick += new System.EventHandler(this.datos_precio_habitacion_DoubleClick);
-            // 
             // datos_habitacion_reserva
             // 
             this.datos_habitacion_reserva.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -310,6 +234,58 @@
             this.boton_eliminar.UseVisualStyleBackColor = true;
             this.boton_eliminar.Click += new System.EventHandler(this.boton_eliminar_Click);
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.datos_reserva);
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(273, 139);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Reserva";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // datos_reserva
+            // 
+            this.datos_reserva.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datos_reserva.Location = new System.Drawing.Point(6, 5);
+            this.datos_reserva.Name = "datos_reserva";
+            this.datos_reserva.Size = new System.Drawing.Size(260, 120);
+            this.datos_reserva.TabIndex = 3;
+            this.datos_reserva.DoubleClick += new System.EventHandler(this.datos_reserva_DoubleClick);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.Datos_Habitacion);
+            this.tabPage1.Location = new System.Drawing.Point(4, 24);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(273, 139);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Habitacion";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // Datos_Habitacion
+            // 
+            this.Datos_Habitacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Datos_Habitacion.Location = new System.Drawing.Point(6, 5);
+            this.Datos_Habitacion.Name = "Datos_Habitacion";
+            this.Datos_Habitacion.Size = new System.Drawing.Size(260, 120);
+            this.Datos_Habitacion.TabIndex = 3;
+            this.Datos_Habitacion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Datos_Habitacion_CellContentClick);
+            this.Datos_Habitacion.DoubleClick += new System.EventHandler(this.Datos_Habitacion_DoubleClick);
+            // 
+            // panel_de_control
+            // 
+            this.panel_de_control.Controls.Add(this.tabPage1);
+            this.panel_de_control.Controls.Add(this.tabPage2);
+            this.panel_de_control.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel_de_control.Location = new System.Drawing.Point(338, 22);
+            this.panel_de_control.Name = "panel_de_control";
+            this.panel_de_control.SelectedIndex = 0;
+            this.panel_de_control.Size = new System.Drawing.Size(281, 167);
+            this.panel_de_control.TabIndex = 4;
+            // 
             // HabitacionReserva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -325,15 +301,13 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            this.panel_de_control.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Datos_Habitacion)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.datos_reserva)).EndInit();
-            this.tabPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.datos_precio_habitacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.datos_habitacion_reserva)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.datos_reserva)).EndInit();
+            this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Datos_Habitacion)).EndInit();
+            this.panel_de_control.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -352,16 +326,14 @@
         private System.Windows.Forms.DateTimePicker fecha_de_salida;
         private System.Windows.Forms.TextBox Precio_habitacion;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TabControl panel_de_control;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.DataGridView Datos_Habitacion;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView datos_reserva;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.DataGridView datos_precio_habitacion;
         private System.Windows.Forms.DataGridView datos_habitacion_reserva;
         private System.Windows.Forms.Button boton_guardar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button boton_eliminar;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.DataGridView datos_reserva;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.DataGridView Datos_Habitacion;
+        private System.Windows.Forms.TabControl panel_de_control;
     }
 }

@@ -49,7 +49,7 @@
             this.recaudacionesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(584, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(938, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -65,14 +65,14 @@
             // clienteToolStripMenuItem
             // 
             this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.clienteToolStripMenuItem.Text = "Cliente";
             this.clienteToolStripMenuItem.Click += new System.EventHandler(this.clienteToolStripMenuItem_Click);
             // 
             // reservaToolStripMenuItem
             // 
             this.reservaToolStripMenuItem.Name = "reservaToolStripMenuItem";
-            this.reservaToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.reservaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.reservaToolStripMenuItem.Text = "Reserva";
             this.reservaToolStripMenuItem.Click += new System.EventHandler(this.reservaToolStripMenuItem_Click);
             // 
@@ -97,6 +97,7 @@
             this.reservarHabitaciónToolStripMenuItem.Name = "reservarHabitaciónToolStripMenuItem";
             this.reservarHabitaciónToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
             this.reservarHabitaciónToolStripMenuItem.Text = "Reservar Habitación";
+            this.reservarHabitaciónToolStripMenuItem.Click += new System.EventHandler(this.reservarHabitaciónToolStripMenuItem_Click);
             // 
             // recaudacionesToolStripMenuItem
             // 
@@ -125,7 +126,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(584, 361);
+            this.ClientSize = new System.Drawing.Size(938, 538);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
