@@ -48,9 +48,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Control\CCliente.cs" />
+    <Compile Include="Control\CHabReserva.cs" />
     <Compile Include="Control\CHabs.cs" />
     <Compile Include="Control\CRec.cs" />
     <Compile Include="Control\CReserva.cs" />
+    <Compile Include="Model\MHabReserva.cs" />
     <Compile Include="Model\MHabs.cs" />
     <Compile Include="Model\ConexionBD.cs" />
     <Compile Include="Model\MCliente.cs" />
@@ -69,6 +71,12 @@
     </Compile>
     <Compile Include="Views\habitacionesDlg.Designer.cs">
       <DependentUpon>habitacionesDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HabitacionReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\HabitacionReserva.Designer.cs">
+      <DependentUpon>HabitacionReserva.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\mainFrm.cs">
       <SubType>Form</SubType>
@@ -103,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\habitacionesDlg.resx">
       <DependentUpon>habitacionesDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\HabitacionReserva.resx">
+      <DependentUpon>HabitacionReserva.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\mainFrm.resx">
       <DependentUpon>mainFrm.cs</DependentUpon>

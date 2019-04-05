@@ -18,34 +18,34 @@ namespace SistemaHotel.Views
         public Reserva()
         {
             InitializeComponent();
+            CenterToScreen();
+            Bitmap img = new Bitmap(Application.StartupPath + @"\background\fondo1.jpg");
+            this.BackgroundImage = img;
+            this.BackgroundImageLayout = ImageLayout.Stretch;
+            boton_agregar.Enabled = false;
+            
         }
 
-        private void calendario_reserva_DateChanged(object sender, DateRangeEventArgs e)
-        {
-            fecha_entrada_txt.Text = calendario_reserva.SelectionEnd.Date.ToString();
-            calendario_reserva.Visible = false;
-        }
-
-        private void fecha_entrada_txt_TextChanged(object sender, EventArgs e)
-        {
-            calendario_reserva.Visible = true;
-        }
+        
 
         private void combo_formapago_SelectedIndexChanged(object sender, EventArgs e)
         {
-            calendario_reserva.Visible = false;
-        }
-
-        private void combo_idempleado_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            calendario_reserva.Visible = false;
             
-            combo_idempleado.Items.Add(CReserva.listado_empleado());
         }
 
+        private void mostrar()
+        {
+            this.datos_reserva.DataSource = CReserva.visualizar();
+            this.datos_clientes.DataSource = CReserva.visualizar_2();
+            this.datos_empleados.DataSource = CReserva.visualizar_3();
+        }
+        
         private void Reserva_Load(object sender, EventArgs e)
         {
-            calendario_reserva.Visible = false;
+            this.mostrar();
+            busqueda_txt.Hide();
+            Id_cliente_txt.Enabled = false;
+            Id_empleado_txt.Enabled = false;
             
         }
 
@@ -59,41 +59,154 @@ namespace SistemaHotel.Views
         {
             MessageBox.Show(mensaje, "Sistema de Información", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-        
+
         private void boton_agregar_Click(object sender, EventArgs e)
         {
+            Console.WriteLine(Convert.ToDateTime(fecha_de_la_reserva.Text));
             try
             {
-                string rpta = "";
+                CReserva entrada = new CReserva();
 
-                rpta = CReserva.insertar_datos(
-                    Convert.ToInt32(combo_idcliente.SelectedItem),
-                    Convert.ToInt32(combo_idempleado.SelectedItem),
-                    fecha_entrada_txt.Text,
+                entrada.insertar_datos(
+                    Convert.ToInt32(Id_cliente_txt.Text),
+                    Convert.ToInt32(Id_empleado_txt.Text),
+                    Convert.ToDateTime(fecha_de_la_reserva.Text),
                     Convert.ToString(combo_formapago.SelectedItem),
                     Convert.ToString(combo_formadivisa.SelectedItem),
                     Convert.ToString(combo_stat.SelectedItem));
-                    MensajeOk("GUARDADO CORRECTAMENTE");
+
+                MensajeOk("GUARDADO CORRECTAMENTE");
             }
             catch (Exception ex)
             {
-                MensajeError(Convert.ToString(ex));
-               
-            }       
+                MessageBox.Show(Convert.ToString(ex));
+            }
+
+            this.mostrar();
+
+            if (MessageBox.Show("Desea Editar o Buscar un dato de la reserva", "RESERVA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                busqueda_txt.Show();
+                boton_editar.Enabled = true;
+                boton_buscar.Enabled = true;
+            }
+            else
+            {
+                busqueda_txt.Hide();
+                boton_editar.Enabled = false;
+                boton_buscar.Enabled = false;
+            }
 
 
-    
         }
 
-        private void combo_idcliente_SelectedIndexChanged(object sender, EventArgs e)
+        private void datos_clientes_DoubleClick(object sender, EventArgs e)
         {
-            combo_idcliente.Items.Add(CReserva.listado_cliente());
+            Id_cliente_txt.Text = Convert.ToString(this.datos_clientes.CurrentRow.Cells["ID del cliente"].Value);
         }
 
-        private void boton_visualizar_Click(object sender, EventArgs e)
+        private void datos_empleados_DoubleClick(object sender, EventArgs e)
         {
-            //this.dataCliente.DataSource = NCliente.Mostrar();
-            //this.lista_de_las_reservas = CReserva.
+            Id_empleado_txt.Text = Convert.ToString(this.datos_empleados.CurrentRow.Cells["ID del Empleado"].Value);
+        }
+
+        private void verificacion(object sender, EventArgs e)
+        {
+            if (Id_cliente_txt.Text.Length !=0 &&
+                Id_empleado_txt.Text.Length != 0 &&
+                fecha_de_la_reserva.Text.Length != 0 &&
+                combo_formapago.SelectedItem != null &&
+                combo_formadivisa.SelectedItem != null &&
+                combo_stat.SelectedItem != null)
+            {
+                boton_agregar.Enabled = true;
+            }
+            else
+            {
+                boton_agregar.Enabled = false;
+            }
+        }
+
+        private void verificacion_2(object sender, EventArgs e)
+        {
+            if (Id_cliente_txt.Text.Length != 0 &&
+                Id_empleado_txt.Text.Length != 0 &&
+                fecha_de_la_reserva.Text.Length != 0 &&
+                combo_formapago.SelectedItem != null &&
+                combo_formadivisa.SelectedItem != null &&
+                combo_stat.SelectedItem != null)
+            {
+                //boton_agregar.Enabled = true;
+                boton_editar.Enabled = true;
+                
+            }
+            else
+            {
+                boton_editar.Enabled = false;
+            }
+        }
+
+        private void boton_editar_Click(object sender, EventArgs e)
+        {
+            boton_agregar.Enabled = false;
+            
+            Console.WriteLine(Convert.ToDateTime(fecha_de_la_reserva.Text));
+            try
+            {
+                CReserva entrada = new CReserva();
+
+                entrada.editar_datos(
+                    Convert.ToInt32(this.datos_reserva.CurrentRow.Cells["ID Reserva"].Value),
+                    Convert.ToInt32(Id_cliente_txt.Text),
+                    Convert.ToInt32(Id_empleado_txt.Text),
+                    Convert.ToDateTime(fecha_de_la_reserva.Text),
+                    Convert.ToString(combo_formapago.SelectedItem),
+                    Convert.ToString(combo_formadivisa.SelectedItem),
+                    Convert.ToString(combo_stat.SelectedItem));
+
+                MensajeOk("EDITADOS CORRECTAMENTE");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Convert.ToString(ex));
+            }
+
+            this.mostrar();
+        }
+
+        private void datos_reserva_DoubleClick(object sender, EventArgs e)
+        {
+            this.Id_cliente_txt.Text = Convert.ToString(this.datos_reserva.CurrentRow.Cells["ID Cliente"].Value);
+            this.Id_empleado_txt.Text = Convert.ToString(this.datos_reserva.CurrentRow.Cells["ID Empleado"].Value);
+            //this.fecha_de_la_reserva.Text = Convert.ToString(this.datos_reserva.CurrentRow.Cells["Fecha de la Reserva"].Value);
+            this.combo_formapago.SelectedItem = Convert.ToString(this.datos_reserva.CurrentRow.Cells["Forma de Pago"].Value);
+            this.combo_formadivisa.SelectedItem = Convert.ToString(this.datos_reserva.CurrentRow.Cells["Divisa"].Value);
+            this.combo_stat.SelectedItem = Convert.ToString(this.datos_reserva.CurrentRow.Cells["Estado"].Value);
+        }
+
+        private void boton_buscar_Click(object sender, EventArgs e)
+        {
+            busqueda_txt.Show();
+            
+        }
+
+        private void busqueda_txt_TextChanged(object sender, EventArgs e)
+        {
+            this.datos_reserva.DataSource = CReserva.buscar_cliente(this.busqueda_txt.Text.Trim());
+        }
+
+        private void boton_eliminar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Desea Eliminar esta reserva", "RESERVA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                CReserva.eliminar_reserva(Convert.ToInt32(this.datos_reserva.CurrentRow.Cells["Id Reserva"].Value));
+                this.mostrar();
+            }
+            else
+            {
+                this.mostrar();
+            }
+            
         }
     }
 }
