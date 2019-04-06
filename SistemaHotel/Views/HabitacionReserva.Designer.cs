@@ -153,6 +153,7 @@
             this.Datos_Habitacion.Name = "Datos_Habitacion";
             this.Datos_Habitacion.Size = new System.Drawing.Size(260, 120);
             this.Datos_Habitacion.TabIndex = 3;
+            this.Datos_Habitacion.DoubleClick += new System.EventHandler(this.Datos_Habitacion_DoubleClick);
             // 
             // tabPage2
             // 
@@ -172,6 +173,7 @@
             this.datos_reserva.Name = "datos_reserva";
             this.datos_reserva.Size = new System.Drawing.Size(260, 120);
             this.datos_reserva.TabIndex = 3;
+            this.datos_reserva.DoubleClick += new System.EventHandler(this.datos_reserva_DoubleClick);
             // 
             // groupBox1
             // 

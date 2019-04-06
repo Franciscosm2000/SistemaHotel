@@ -176,6 +176,7 @@
             this.datos_empleados.Name = "datos_empleados";
             this.datos_empleados.Size = new System.Drawing.Size(349, 120);
             this.datos_empleados.TabIndex = 34;
+            this.datos_empleados.DoubleClick += new System.EventHandler(this.datos_empleados_DoubleClick);
             // 
             // datos_clientes
             // 
@@ -184,6 +185,7 @@
             this.datos_clientes.Name = "datos_clientes";
             this.datos_clientes.Size = new System.Drawing.Size(349, 120);
             this.datos_clientes.TabIndex = 33;
+            this.datos_clientes.DoubleClick += new System.EventHandler(this.datos_clientes_DoubleClick);
             // 
             // datos_reserva
             // 

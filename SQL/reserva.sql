@@ -169,12 +169,14 @@ from habitacion h inner join tipo_habitacion th on th.cod_tipo=h.cod_tipo;
 
 execute mostrar_habitaciones
 
-create procedure mostrar_la_reservacion
+alter procedure mostrar_la_reservacion
 as
 select 
 r.id_reserva as [Id de Reserva],
+(c.p_nom+' '+c.p_apell) as [Nombre Cliente],
 r.fecha_reserva as [Fecha de la Reserva]
-from reserva r;
+from reserva r
+inner join cliente c on c.id_cliente=r.id_cliente;
 
 execute mostrar_la_reservacion
 
